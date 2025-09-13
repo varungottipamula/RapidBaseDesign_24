@@ -269,3 +269,27 @@ body{
 .lightbox-controls button:hover {
   background: #ddd;
 }
+
+/* Adjust logo size inside header */
+.site-header .logo img {
+  max-height: 60px;  /* control logo height */
+  width: auto;       /* keep proportions */
+  display: block;
+}
+
+/* Logo container */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between image and text */
+  font-size: 20px;
+  font-weight: 600;
+  color: #ccd7d7;
+}
+
+/* Logo image sizing */
+.logo img {
+  max-height: 50px;  /* adjust size */
+  width: auto;
+  display: block;
+}
