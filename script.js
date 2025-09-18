@@ -1,5 +1,17 @@
 // wait for DOM
 document.addEventListener('DOMContentLoaded', ()=>{
+  // iOS video autoplay fix
+const heroVideo = document.querySelector(".hero-video");
+if (heroVideo) {
+  heroVideo.muted = true;
+  heroVideo.setAttribute("playsinline", "");
+  heroVideo.setAttribute("webkit-playsinline", "");
+  heroVideo.play().catch(() => {
+    // fallback for iOS when autoplay fails
+    heroVideo.setAttribute("controls", "true");
+  });
+}
+
 
   /* ---------- NAV TOGGLE for mobile ---------- */
   const navToggle = document.getElementById('nav-toggle');
@@ -258,4 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+
 
