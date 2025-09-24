@@ -271,6 +271,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// SUCCESS MESSAGE animation
+gsap.fromTo(".success-inner",
+  { opacity: 0, y: 40 },
+  {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".success",
+      start: "top 80%", // when 80% of viewport hits section
+    }
+  }
+);
+
+
 
 
 

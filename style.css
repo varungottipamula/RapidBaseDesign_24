@@ -300,3 +300,53 @@ body {
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
 }
+
+/* SUCCESS MESSAGE SECTION */
+.success {
+  position: relative;
+  background: url("images/success-bg.jpg") center/cover no-repeat fixed; /* add your own bg */
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+  overflow: hidden;
+}
+
+.success::before {
+  /* dark overlay for readability */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.success-inner {
+  position: relative; /* so it sits above the overlay */
+  max-width: 700px;
+  margin: 0 auto;
+  z-index: 1;
+  opacity: 0; /* start hidden for animation */
+  transform: translateY(40px); /* slide up animation */
+}
+
+.success h2 {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.success p {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+}
+
+.success-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.success-actions .btn {
+  min-width: 160px;
+  text-align: center;
+}
