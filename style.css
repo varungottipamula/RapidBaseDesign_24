@@ -301,6 +301,11 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* Hide success message by default */
+#success-message {
+  display: none;
+}
+
 /* SUCCESS MESSAGE SECTION */
 .success {
   position: relative;

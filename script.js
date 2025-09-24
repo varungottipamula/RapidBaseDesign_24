@@ -286,6 +286,21 @@ gsap.fromTo(".success-inner",
   }
 );
 
+const getQuoteBtn = document.getElementById("get-quote-btn");
+const successSection = document.getElementById("success-message");
+
+getQuoteBtn.addEventListener("click", function(e) {
+  e.preventDefault(); // prevent default anchor jump
+  successSection.style.display = "block"; // show the section
+  successSection.scrollIntoView({ behavior: "smooth" });
+
+  // Animate the inner content
+  gsap.fromTo(".success-inner",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
+  );
+});
+
 
 
 
