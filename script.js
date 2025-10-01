@@ -301,6 +301,14 @@ getQuoteBtn.addEventListener("click", function(e) {
   );
 });
 
+window.addEventListener('scroll', function(){
+  const scrolled = window.pageYOffset;
+  const bg = document.querySelector('.parallax-bg');
+  // adjust the divisor for speed
+  bg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+});
+
+
 
 
 

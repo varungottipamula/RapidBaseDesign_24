@@ -7,6 +7,8 @@
   <meta name="description" content="We Design, Build & Innovate for Your Digital Success" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
@@ -194,22 +196,192 @@
   </div>
 </section>
 
-   <!-- CONTACT (parallax) -->
-<section id="contact" class="section parallax contact">
-  <div class="overlay-glass contact-inner">
-    <h2>Contact Us</h2>
-    <p class="muted">
-      📩 rapidbasedesign1@gmail.com
-    </p>
-    <p class="muted">
-      📞 +91-7304660132
-    </p>
-    <!-- Email button -->
-    <a class="btn primary" href="mailto:rapidbasedesign1@gmail.com">Email Us</a>
-    <!-- New contact button (like Email Us) -->
-    <a class="btn primary" href="tel:+917304660132">Call Us</a>
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact-section">
+  <div class="parallax-bg" style="background-image: url('images/contact-bg.jpg'); background-attachment: fixed; background-size: cover; background-position: center;"></div>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <div class="contact-content">
+      
+      <!-- CONTACT FORM -->
+      <div class="contact-form">
+
+        <form id="contactForm" action="https://formspree.io/f/xanpjwwa" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email *</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+
+        <div id="form-success" style="display:none; margin-top: 20px; color: #00ff00; font-weight: bold;">
+          ✔️ Message sent successfully! We’ll get back to you soon.
+        </div>
+      </div>
+
+      <!-- CONTACT INFO -->
+      <div class="contact-info">
+        <h2>Get In Touch</h2>
+        <p>Have a project in mind or want to discuss ideas? Drop a message and we’ll get back to you as soon as possible.</p>
+
+        <ul class="contact-list">
+          <li>
+            <span class="icon">📧</span>
+            <span class="info">rapidbasedesign1@gmail.com</span>
+            <a href="mailto:rapidbasedesign1@gmail.com" class="action-btn">Send Email</a>
+          </li>
+          <li>
+            <span class="icon">📞</span>
+            <span class="info">+91-7304660132</span>
+            <a href="tel:+917304660132" class="action-btn">Call</a>
+          </li>
+          <li>
+            <span class="icon">🌐</span>
+            <span class="info">rapidbasedesign.com</span>
+            <a href="https://rapidbasedesign.com" target="_blank" class="action-btn">Visit Website</a>
+          </li>
+        </ul>
+
+        <!-- SOCIAL LINKS -->
+        <div class="social-links">
+          <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://pin.it/48mTyrQg1" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+          <a href="https://www.instagram.com/rapidbasedesign" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
   </div>
+
 </section>
+
+<style>
+/* GENERAL STYLES */
+.contact-section {
+  position: relative;
+  padding: 80px 0;
+  color: #fff;
+}
+.parallax-bg {
+  position: absolute;
+  top: 0; left: 0; right:0; bottom:0;
+  z-index: -2;
+}
+.overlay {
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* CONTACT FORM */
+.contact-form {
+  flex: 1 1 400px;
+}
+.contact-form h2 { margin-bottom: 10px; }
+.contact-form p { margin-bottom: 20px; }
+.contact-form .form-group { margin-bottom: 15px; }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+}
+.btn-submit {
+  padding: 10px 20px;
+  background: linear-gradient(90deg,#6a11cb,#2575fc);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-submit:hover { transform: translateY(-2px); }
+
+/* CONTACT INFO */
+.contact-info {
+  flex: 1 1 300px;
+}
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+.contact-list .icon { font-size: 1.5rem; }
+.contact-list .info { font-size: 1rem; font-weight: 500; }
+.action-btn {
+  margin-left: auto;
+  padding: 8px 16px;
+  background: linear-gradient(90deg,#6a11cb,#2575fc);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.action-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); }
+
+/* SOCIAL LINKS */
+.social-links a {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 12px;
+}
+</style>
+
+<script>
+/* FORM SUBMISSION HANDLER */
+const form = document.getElementById('contactForm');
+const successMsg = document.getElementById('form-success');
+
+form.addEventListener('submit', function(e){
+  e.preventDefault(); // prevent default form submit
+
+  const action = form.getAttribute('action');
+  const formData = new FormData(form);
+
+  fetch(action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if(response.ok){
+      successMsg.style.display = 'block';
+      form.reset();
+    } else {
+      alert("Oops! There was a problem submitting your form");
+    }
+  }).catch(error => {
+    alert("Oops! There was a problem submitting your form");
+  });
+});
+</script>
 
 
   <footer class="site-footer">
