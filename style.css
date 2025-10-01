@@ -445,3 +445,59 @@ body {
 .social-links a:hover {
   color: #ffb400;
 }
+
+/* Desktop / default layout */
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* Both columns share space */
+.contact-form, 
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;   /* stack vertically */
+    align-items: center;      /* center them */
+  }
+
+  .contact-form,
+  .contact-info {
+    width: 100%;              /* full width */
+    max-width: 500px;         /* limit max width for readability */
+  }
+
+  .contact-info h2 {
+    text-align: center;       /* center heading */
+  }
+
+  .contact-info p {
+    text-align: center;       /* center intro text */
+  }
+
+  .contact-list li {
+    display: flex;
+    flex-direction: column;   /* stack icon, text, button */
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .contact-list li a {
+    margin-top: 8px;          /* space between icon/text and button */
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+}
+
