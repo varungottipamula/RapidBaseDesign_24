@@ -402,16 +402,16 @@ form.addEventListener('submit', function(e){
 
 
   <script src="script.js" defer></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const toggle = document.querySelector("#nav-toggle");
-    const menu = document.querySelector("#site-nav");
+ <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const toggle = document.querySelector("#nav-toggle");
+  const menu = document.querySelector("#site-nav");
 
-    // When the user scrolls, close the mobile menu
-    window.addEventListener("scroll", () => {
-    if (menu && toggle && menu.classList.contains("active")) {
-      menu.classList.remove("active");
-      toggle.classList.remove("open");
+  // Close mobile menu with animation on scroll
+  window.addEventListener("scroll", () => {
+    if (menu.classList.contains("active")) {
+      menu.classList.remove("active"); // slide menu up
+      toggle.classList.remove("open"); // reset hamburger
     }
   });
 });
