@@ -1072,7 +1072,7 @@ textarea.form-control {
     display: none;
   }
 
-  header nav.active {
+  header nav.open {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -1082,11 +1082,28 @@ textarea.form-control {
     background: #000;
     padding: 20px;
     gap: 15px;
+    z-index: 999;
   }
 
   header nav a {
     padding: 10px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  #nav-toggle {
+    display: block;
+  }
+
+  /* About Section - Tablet */
+  .about-inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about-image {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   /* Hero */
@@ -1219,6 +1236,24 @@ textarea.form-control {
 
   .phone-number {
     font-size: 12px;
+  }
+
+  /* About Section - Mobile */
+  .about-image {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .image-frame {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   /* Hero */
