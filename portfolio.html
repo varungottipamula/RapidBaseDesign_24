@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - DeepDigital</title>
+    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.jpeg" alt="Rapid Base Design" class="logo-img">
+                <span class="logo-text"><span class="highlight">RAPID</span> BASE <span
+                        class="subtle">DESIGN</span></span>
+            </a>
+
+            <nav class="nav">
+                <a href="index.html">HOME</a>
+                <a href="about.html">ABOUT</a>
+                <a href="services.html">SERVICES</a>
+                <a href="portfolio.html" class="active">PORTFOLIO</a>
+                <a href="testimonials.html">TESTIMONIALS</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+
+            <div class="header-contact">
+                <i class="fas fa-phone-alt"></i>
+                <span>+91 7304660132</span>
+            </div>
+
+            <button id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <nav class="breadcrumbs">
+                <a href="index.html">Home</a> &gt; <span>Portfolio</span>
+            </nav>
+            <h1>OUR <span class="highlight">WORK</span></h1>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-prev">&#10094;</span>
+        <span class="lightbox-next">&#10095;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Portfolio Item">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="section portfolio" style="padding-top: 80px; padding-bottom: 100px;">
+        <div class="container">
+
+            <!-- FILTERS -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Design & Development</button>
+                <button class="filter-btn" data-filter="branding">Graphic & Brand Design</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce Solutions</button>
+                <button class="filter-btn" data-filter="marketing">Digital Marketing</button>
+            </div>
+
+            <div class="cards portfolio-grid">
+                <!-- Project 1 -->
+                <article class="portfolio-item" data-category="web">
+                    <img src="images/web design/webpage.jpeg" alt="Web Design">
+                    <div class="portfolio-overlay">
+                        <h3>FEMINE US</h3>
+                        <p>WEB DESIGN</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="portfolio-item" data-category="branding">
+                    <img src="images/branding/skincare.jpeg" alt="Branding">
+                    <div class="portfolio-overlay">
+                        <h3>SKINCARE BRAND</h3>
+                        <p>BRANDING & ADS</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="portfolio-item" data-category="marketing">
+                    <img src="images/MARKETING/digital.jpg" alt="Marketing">
+                    <div class="portfolio-overlay">
+                        <h3>DIGITAL GROWTH</h3>
+                        <p>MARKETING</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 4 (New) -->
+                <article class="portfolio-item" data-category="ecommerce">
+                    <img src="images/ecommerce/online shop.png" alt="E-commerce">
+                    <div class="portfolio-overlay">
+                        <h3>ONLINE SHOP</h3>
+                        <p>E-COMMERCE</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+
+                <!-- Project 5 - Web Design -->
+                <article class="portfolio-item" data-category="web">
+                    <img src="images/web design/coffee.jpeg" alt="Web Design">
+                    <div class="portfolio-overlay">
+                        <h3>COFFEE SHOP</h3>
+                        <p>WEB DESIGN</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 6 - Web Design -->
+                <article class="portfolio-item" data-category="web">
+                    <img src="images/web design/personality.jpeg" alt="Web Design">
+                    <div class="portfolio-overlay">
+                        <h3>PERSONAL BRAND</h3>
+                        <p>WEB DESIGN</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 7 - Web Design -->
+                <article class="portfolio-item" data-category="web">
+                    <img src="images/web design/Glamstore.jpg" alt="Web Design">
+                    <div class="portfolio-overlay">
+                        <h3>JERRY'S GLAMSTORE</h3>
+                        <p>WEB DESIGN</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 8 - Branding -->
+                <article class="portfolio-item" data-category="branding">
+                    <img src="images/branding/aotura.jpeg" alt="Branding">
+                    <div class="portfolio-overlay">
+                        <h3>AOTURA BRAND</h3>
+                        <p>BRANDING</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 8 - Branding -->
+                <article class="portfolio-item" data-category="branding">
+                    <img src="images/branding/poster.jpeg" alt="Branding">
+                    <div class="portfolio-overlay">
+                        <h3>EVENT POSTER</h3>
+                        <p>BRANDING</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 9 - Branding -->
+                <article class="portfolio-item" data-category="branding">
+                    <img src="images/branding/grahic.jpeg" alt="Branding">
+                    <div class="portfolio-overlay">
+                        <h3>GRAPHIC DESIGN</h3>
+                        <p>BRANDING</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 10 - E-commerce -->
+                <article class="portfolio-item" data-category="ecommerce">
+                    <img src="images/ecommerce/ecommerce.png" alt="E-commerce">
+                    <div class="portfolio-overlay">
+                        <h3>PAYMENT SYSTEM</h3>
+                        <p>E-COMMERCE</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 11 - E-commerce -->
+                <article class="portfolio-item" data-category="ecommerce">
+                    <img src="images/ecommerce/holiday.jpg" alt="E-commerce">
+                    <div class="portfolio-overlay">
+                        <h3>HOLIDAY STORE</h3>
+                        <p>E-COMMERCE</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 12 - Marketing -->
+                <article class="portfolio-item" data-category="marketing">
+                    <img src="images/MARKETING/laptop.jpg" alt="Marketing">
+                    <div class="portfolio-overlay">
+                        <h3>CONTENT STRATEGY</h3>
+                        <p>MARKETING</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+
+                <!-- Project 13 - Marketing -->
+                <article class="portfolio-item" data-category="marketing">
+                    <img src="images/MARKETING/marketing.jpg" alt="Marketing">
+                    <div class="portfolio-overlay">
+                        <h3>CAMPAIGN STRATEGY</h3>
+                        <p>MARKETING</p>
+                        <a href="#" class="btn primary">VIEW CASE</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="cards footer-inner">
+            <!-- Brand -->
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo"><span class="highlight">RAPID</span> BASE <span class="highlight">DESIGN</span>
+                </h3>
+                <p>We build digital products that help businesses grow and succeed in the modern world.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/rapidbasedesign?igsh=NHh1NWtqcWdjYW5o&utm_source=qr"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://pin.it/48mTyrQg1"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="footer-col">
+                <h4>EXPLORE</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-col">
+                <h4>CONTACT</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-phone"></i> <a href="tel:+917304660132"
+                            style="color: inherit; text-decoration: none;">+91 7304660132</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:rapidbasedesign1@gmail.com"
+                            style="color: inherit; text-decoration: none;">rapidbasedesign1@gmail.com</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-col">
+                <h4>NEWSLETTER</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit">GO</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Rapid Base Design. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

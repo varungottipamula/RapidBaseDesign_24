@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .filter-btn.active {
+            background: #ff0055;
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .portfolio-item {
+            border: 2px solid #ddd;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Portfolio Filter Test</h1>
+
+    <div>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web Design</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+        <button class="filter-btn" data-filter="marketing">Marketing</button>
+    </div>
+
+    <div class="portfolio-grid">
+        <div class="portfolio-item" data-category="web">
+            <h3>Web 1</h3>
+            <p>Category: WEB</p>
+        </div>
+        <div class="portfolio-item" data-category="branding">
+            <h3>Branding 1</h3>
+            <p>Category: BRANDING</p>
+        </div>
+        <div class="portfolio-item" data-category="web">
+            <h3>Web 2</h3>
+            <p>Category: WEB</p>
+        </div>
+        <div class="portfolio-item" data-category="marketing">
+            <h3>Marketing 1</h3>
+            <p>Category: MARKETING</p>
+        </div>
+        <div class="portfolio-item" data-category="ecommerce">
+            <h3>E-commerce 1</h3>
+            <p>Category: ECOMMERCE</p>
+        </div>
+        <div class="portfolio-item" data-category="branding">
+            <h3>Branding 2</h3>
+            <p>Category: BRANDING</p>
+        </div>
+    </div>
+
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
