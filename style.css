@@ -1167,6 +1167,20 @@ textarea.form-control {
   .form-group {
     width: 100%;
   }
+
+  /* Logo - Tablet */
+  .logo-img {
+    height: 32px;
+  }
+
+  .logo-text {
+    font-size: 20px;
+  }
+
+  /* Header */
+  .header-contact {
+    display: none;
+  }
 }
 
 /* Mobile Only (max-width: 480px) */
@@ -1191,8 +1205,16 @@ textarea.form-control {
   }
 
   /* Header */
-  .logo {
-    font-size: 20px;
+  .logo-img {
+    height: 28px;
+  }
+
+  .logo-text {
+    font-size: 16px;
+  }
+
+  .logo-link {
+    gap: 8px;
   }
 
   .phone-number {
@@ -1209,9 +1231,17 @@ textarea.form-control {
     font-size: 14px;
   }
 
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
+
   .btn {
-    padding: 12px 25px;
-    font-size: 13px;
+    padding: 14px 28px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
   }
 
   /* Stats */
@@ -1271,12 +1301,17 @@ textarea.form-control {
     align-items: center;
   }
 
-  .social-links {
-    justify-content: center;
+  .newsletter-form {
+    flex-direction: column;
+    gap: 10px;
   }
 
-  /* Sections */
-  .section {
-    padding: 60px 0;
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  .social-links {
+    justify-content: center;
   }
 }
