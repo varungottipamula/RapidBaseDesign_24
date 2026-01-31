@@ -64,17 +64,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // fade in sections
   gsap.utils.toArray('.section').forEach(sec => {
-    gsap.from(sec.querySelectorAll('.overlay-glass, .card, .card img, .testimonials-wrap, .list'), {
-      scrollTrigger: { trigger: sec, start: 'top 85%' },
-      y: 60, opacity: 0, stagger: 0.2, duration: 1.0, ease: 'power4.out'
-    });
+    const elements = sec.querySelectorAll('.overlay-glass, .card, .card img, .testimonials-wrap, .list');
+    if (elements.length > 0) {
+      gsap.from(elements, {
+        scrollTrigger: { trigger: sec, start: 'top 85%' },
+        y: 60, opacity: 0, stagger: 0.2, duration: 1.0, ease: 'power4.out'
+      });
+    }
   });
 
   // stagger service cards (Faster)
-  gsap.from('.service-card', {
-    scrollTrigger: { trigger: '#services', start: 'top 85%' },
-    y: 40, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out'
-  });
+  const serviceCards = document.querySelectorAll('.service-card');
+  if (serviceCards.length > 0) {
+    gsap.from('.service-card', {
+      scrollTrigger: { trigger: '#services', start: 'top 85%' },
+      y: 40, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out'
+    });
+  }
 
   /* ---------- Canvas particles & blobs (mouse reactive) ---------- */
   const canvas = document.getElementById('scene-canvas');
@@ -239,30 +245,38 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Close lightbox when clicking close button
-  closeBtn.addEventListener("click", () => {
-    lightbox.style.display = "none";
-  });
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+  }
 
   // Close lightbox when clicking outside the image
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      lightbox.style.display = "none";
-    }
-  });
+  if (lightbox) {
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = "none";
+      }
+    });
+  }
 
   // Navigate to next image
-  nextBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    currentIndex = (currentIndex + 1) % currentImages.length;
-    showLightbox(currentIndex);
-  });
+  if (nextBtn) {
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      showLightbox(currentIndex);
+    });
+  }
 
   // Navigate to previous image
-  prevBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-    showLightbox(currentIndex);
-  });
+  if (prevBtn) {
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      showLightbox(currentIndex);
+    });
+  }
 
   // Close lightbox using Escape key
   document.addEventListener("keydown", (e) => {
