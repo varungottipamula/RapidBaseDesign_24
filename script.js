@@ -34,170 +34,176 @@ document.addEventListener('DOMContentLoaded', () => {
   const cursor = document.querySelector('.cursor');
   const typingSpeed = 80, erasingSpeed = 40, pause = 1400;
 
-  function type() {
-    const line = lines[li];
-    if (ci < line.length) {
-      typed.textContent = line.slice(0, ci + 1);
-      ci++;
-      setTimeout(type, typingSpeed);
-    } else {
-      setTimeout(erase, pause);
+  if (typed) {
+    function type() {
+      const line = lines[li];
+      if (ci < line.length) {
+        typed.textContent = line.slice(0, ci + 1);
+        ci++;
+        setTimeout(type, typingSpeed);
+      } else {
+        setTimeout(erase, pause);
+      }
     }
-  }
-  function erase() {
-    if (ci > 0) {
-      typed.textContent = typed.textContent.slice(0, ci - 1);
-      ci--;
-      setTimeout(erase, erasingSpeed);
-    } else {
-      li = (li + 1) % lines.length;
-      setTimeout(type, 350);
+    function erase() {
+      if (ci > 0) {
+        typed.textContent = typed.textContent.slice(0, ci - 1);
+        ci--;
+        setTimeout(erase, erasingSpeed);
+      } else {
+        li = (li + 1) % lines.length;
+        setTimeout(type, 350);
+      }
     }
+    setTimeout(type, 600);
   }
-  setTimeout(type, 600);
 
   // blinking cursor
   setInterval(() => { if (cursor) cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0' }, 500);
 
   /* ---------- GSAP entrance animations ---------- */
-  gsap.registerPlugin(ScrollTrigger);
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
 
-  // fade in sections
-  gsap.utils.toArray('.section').forEach(sec => {
-    const elements = sec.querySelectorAll('.overlay-glass, .card, .card img, .testimonials-wrap, .list');
-    if (elements.length > 0) {
-      gsap.from(elements, {
-        scrollTrigger: { trigger: sec, start: 'top 85%' },
-        y: 60, opacity: 0, stagger: 0.2, duration: 1.0, ease: 'power4.out'
+    // fade in sections
+    gsap.utils.toArray('.section').forEach(sec => {
+      const elements = sec.querySelectorAll('.overlay-glass, .card, .card img, .testimonials-wrap, .list');
+      if (elements.length > 0) {
+        gsap.from(elements, {
+          scrollTrigger: { trigger: sec, start: 'top 85%' },
+          y: 60, opacity: 0, stagger: 0.2, duration: 1.0, ease: 'power4.out'
+        });
+      }
+    });
+
+    // stagger service cards (Faster)
+    const serviceCards = document.querySelectorAll('.service-card');
+    if (serviceCards.length > 0) {
+      gsap.from('.service-card', {
+        scrollTrigger: { trigger: '#services', start: 'top 85%' },
+        y: 40, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out'
       });
     }
-  });
-
-  // stagger service cards (Faster)
-  const serviceCards = document.querySelectorAll('.service-card');
-  if (serviceCards.length > 0) {
-    gsap.from('.service-card', {
-      scrollTrigger: { trigger: '#services', start: 'top 85%' },
-      y: 40, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out'
-    });
   }
 
   /* ---------- Canvas particles & blobs (mouse reactive) ---------- */
   const canvas = document.getElementById('scene-canvas');
-  const ctx = canvas.getContext('2d');
-  let W = canvas.width = innerWidth;
-  let H = canvas.height = innerHeight;
-  const particles = [];
-  const blobs = [];
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = innerWidth;
+    let H = canvas.height = innerHeight;
+    const particles = [];
+    const blobs = [];
 
-  // handle resize
-  window.addEventListener('resize', () => {
-    W = canvas.width = innerWidth;
-    H = canvas.height = innerHeight;
-  });
-
-  // mouse
-  const mouse = { x: W / 2, y: H / 2 };
-  window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
-
-  // create small particles
-  for (let i = 0; i < 90; i++) {
-    particles.push({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: Math.random() * 2 + 0.5,
-      vx: (Math.random() - 0.5) * 0.2,
-      vy: (Math.random() - 0.5) * 0.2,
-      // Hot Pink hues (330 - 360)
-      hue: 330 + Math.random() * 30
-    });
-  }
-
-  // create blobs
-  for (let i = 0; i < 6; i++) {
-    blobs.push({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: 60 + Math.random() * 120,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      hue: 340 + Math.random() * 30, // Pink/Red range
-      alpha: 0.05 + Math.random() * 0.05
-    });
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    // blobs (soft)
-    blobs.forEach(b => {
-      const dx = (mouse.x - b.x) * 0.0006;
-      const dy = (mouse.y - b.y) * 0.0006;
-      b.x += b.vx + dx * 20;
-      b.y += b.vy + dy * 20;
-
-      if (b.x - b.r > W) b.x = -b.r;
-      if (b.x + b.r < 0) b.x = W + b.r;
-      if (b.y - b.r > H) b.y = -b.r;
-      if (b.y + b.r < 0) b.y = H + b.r;
-
-      const g = ctx.createRadialGradient(b.x, b.y, b.r * 0.1, b.x, b.y, b.r * 1.1);
-      g.addColorStop(0, `hsla(${b.hue}, 70%, 60%, ${b.alpha})`);
-      g.addColorStop(0.4, `hsla(${b.hue}, 60%, 50%, ${b.alpha * 0.5})`);
-      g.addColorStop(1, `rgba(10, 12, 22, 0)`);
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-      ctx.fill();
+    // handle resize
+    window.addEventListener('resize', () => {
+      W = canvas.width = innerWidth;
+      H = canvas.height = innerHeight;
     });
 
-    // particles
-    particles.forEach(p => {
-      p.x += p.vx + (mouse.x - p.x) * 0.0005;
-      p.y += p.vy + (mouse.y - p.y) * 0.0005;
+    // mouse
+    const mouse = { x: W / 2, y: H / 2 };
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
 
-      if (p.x > W + 10) p.x = -10;
-      if (p.x < -10) p.x = W + 10;
-      if (p.y > H + 10) p.y = -10;
-      if (p.y < -10) p.y = H + 10;
+    // create small particles
+    for (let i = 0; i < 90; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 2 + 0.5,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        // Hot Pink hues (330 - 360)
+        hue: 330 + Math.random() * 30
+      });
+    }
 
-      ctx.fillStyle = `hsla(${p.hue}, 60%, 70%, 0.9)`;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-    });
+    // create blobs
+    for (let i = 0; i < 6; i++) {
+      blobs.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: 60 + Math.random() * 120,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        hue: 340 + Math.random() * 30, // Pink/Red range
+        alpha: 0.05 + Math.random() * 0.05
+      });
+    }
 
-    // subtle connecting lines between close particles
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const a = particles[i], b = particles[j];
-        const dx = a.x - b.x, dy = a.y - b.y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        if (d < 120) {
-          ctx.strokeStyle = `rgba(120, 180, 245, ${1 - d / 140})`;
-          ctx.lineWidth = 0.6;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      // blobs (soft)
+      blobs.forEach(b => {
+        const dx = (mouse.x - b.x) * 0.0006;
+        const dy = (mouse.y - b.y) * 0.0006;
+        b.x += b.vx + dx * 20;
+        b.y += b.vy + dy * 20;
+
+        if (b.x - b.r > W) b.x = -b.r;
+        if (b.x + b.r < 0) b.x = W + b.r;
+        if (b.y - b.r > H) b.y = -b.r;
+        if (b.y + b.r < 0) b.y = H + b.r;
+
+        const g = ctx.createRadialGradient(b.x, b.y, b.r * 0.1, b.x, b.y, b.r * 1.1);
+        g.addColorStop(0, `hsla(${b.hue}, 70%, 60%, ${b.alpha})`);
+        g.addColorStop(0.4, `hsla(${b.hue}, 60%, 50%, ${b.alpha * 0.5})`);
+        g.addColorStop(1, `rgba(10, 12, 22, 0)`);
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // particles
+      particles.forEach(p => {
+        p.x += p.vx + (mouse.x - p.x) * 0.0005;
+        p.y += p.vy + (mouse.y - p.y) * 0.0005;
+
+        if (p.x > W + 10) p.x = -10;
+        if (p.x < -10) p.x = W + 10;
+        if (p.y > H + 10) p.y = -10;
+        if (p.y < -10) p.y = H + 10;
+
+        ctx.fillStyle = `hsla(${p.hue}, 60%, 70%, 0.9)`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // subtle connecting lines between close particles
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 120) {
+            ctx.strokeStyle = `rgba(120, 180, 245, ${1 - d / 140})`;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
         }
       }
-    }
 
-    requestAnimationFrame(draw);
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    /* ---------- small performance tweak: pause canvas when tab hidden ---------- */
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        particles.forEach(p => { p.vx = 0; p.vy = 0; });
+        blobs.forEach(b => { b.vx = 0; b.vy = 0; });
+      } else {
+        particles.forEach(p => { p.vx = (Math.random() - 0.5) * 0.3; p.vy = (Math.random() - 0.5) * 0.3; });
+        blobs.forEach(b => { b.vx = (Math.random() - 0.5) * 0.6; b.vy = (Math.random() - 0.5) * 0.6; });
+      }
+    });
   }
-  draw();
-
-  /* ---------- small performance tweak: pause canvas when tab hidden ---------- */
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      particles.forEach(p => { p.vx = 0; p.vy = 0; });
-      blobs.forEach(b => { b.vx = 0; b.vy = 0; });
-    } else {
-      particles.forEach(p => { p.vx = (Math.random() - 0.5) * 0.3; p.vy = (Math.random() - 0.5) * 0.3; });
-      blobs.forEach(b => { b.vx = (Math.random() - 0.5) * 0.6; b.vy = (Math.random() - 0.5) * 0.6; });
-    }
-  });
 
 }); // DOMContentLoaded end
 
