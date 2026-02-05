@@ -132,6 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function draw() {
+      if (document.hidden) {
+        requestAnimationFrame(draw);
+        return;
+      }
       ctx.clearRect(0, 0, W, H);
 
       // blobs (soft)
@@ -325,13 +329,27 @@ if (getQuoteBtn && successSection) {
   });
 }
 
+let isHeroVisible = true;
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    isHeroVisible = entry.isIntersecting;
+  });
+}, { threshold: 0.1 });
+
+const heroSection = document.querySelector('.hero');
+if (heroSection) heroObserver.observe(heroSection);
+
 window.addEventListener('scroll', function () {
+  if (!isHeroVisible) return;
   const scrolled = window.pageYOffset;
   const bg = document.querySelector('.parallax-bg');
   if (bg) {
-    bg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+    // Use requestAnimationFrame for smoother parallax
+    requestAnimationFrame(() => {
+      bg.style.transform = 'translate3d(0, ' + (scrolled * 0.3) + 'px, 0)';
+    });
   }
-});
+}, { passive: true });
 
 
 
