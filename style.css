@@ -634,36 +634,40 @@ body {
 
 .blog-card {
   background: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
   height: 100%;
+  border: 1px solid #eee;
 }
 
 .blog-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .blog-image {
   position: relative;
   width: 100%;
-  height: 240px;
+  aspect-ratio: 1 / 1;
+  /* Match the square image provided by user */
   overflow: hidden;
+  background: #f8f8f8;
 }
 
 .blog-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  /* ensures full image is visible without cropping */
   transition: transform 0.5s;
 }
 
 .blog-card:hover .blog-image img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .blog-category {
@@ -740,10 +744,14 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: gap 0.3s;
+  margin-top: auto;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
 }
 
 .read-more:hover {
   gap: 12px;
+  border-bottom-color: var(--accent);
 }
 
 .read-more i {
@@ -753,6 +761,50 @@ body {
 
 .read-more:hover i {
   transform: translateX(3px);
+}
+
+/* Blog Filters */
+.blog-filters {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.blog-filter-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  text-transform: capitalize;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.blog-filter-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+
+.blog-filter-btn.active,
+.blog-filter-btn:hover {
+  color: #000;
+}
+
+.blog-filter-btn.active::after {
+  width: 100%;
 }
 
 /* ================= PRE-FOOTER / FOOTER ================= */
@@ -819,7 +871,7 @@ body {
 }
 
 .footer-links a {
-  color: #888;
+  color: #bbb;
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -1386,7 +1438,8 @@ textarea.form-control {
   }
 
   .blog-image {
-    height: 200px;
+    aspect-ratio: 1 / 1;
+    height: auto;
   }
 
   .blog-content {
