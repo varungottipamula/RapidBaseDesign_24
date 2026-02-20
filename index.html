@@ -403,6 +403,318 @@
     </a>
   </div>
 
+  <!-- Floating Consult Now Button (Bottom Left) -->
+  <div id="consult-now-wrap" style="
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  ">
+    <button id="consult-now-btn" style="
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 22px;
+      background: linear-gradient(135deg, #ff0055, #ff4081);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255, 0, 85, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      animation: consultPulse 2s ease-in-out infinite;
+    ">
+      <i class="fas fa-comments" style="font-size: 16px;"></i>
+      Consult Now
+    </button>
+    <button id="consult-dismiss-btn" aria-label="Dismiss consult button" style="
+      width: 28px;
+      height: 28px;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: -10px;
+      margin-top: -28px;
+      transition: background 0.2s;
+      line-height: 1;
+    " onmouseover="this.style.background='#ff0055'" onmouseout="this.style.background='rgba(0,0,0,0.55)'">✕</button>
+  </div>
+
+  <style>
+    @keyframes consultPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 20px rgba(255, 0, 85, 0.4);
+      }
+
+      50% {
+        box-shadow: 0 4px 30px rgba(255, 0, 85, 0.7);
+      }
+    }
+
+    #consult-now-btn:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      #consult-now-wrap {
+        bottom: 16px !important;
+        left: 14px !important;
+      }
+
+      #consult-now-btn {
+        padding: 10px 16px !important;
+        font-size: 11px !important;
+        gap: 6px !important;
+      }
+
+      #consult-now-btn i {
+        font-size: 13px !important;
+      }
+
+      #consult-dismiss-btn {
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 10px !important;
+        margin-top: -22px !important;
+      }
+    }
+  </style>
+
+  <!-- POPUP FORM -->
+  <div id="popup-overlay" style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  ">
+    <div id="popup-box" style="
+      background: #fff;
+      border-radius: 16px;
+      max-width: 420px;
+      width: 90%;
+      padding: 36px 28px 28px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: translateY(30px) scale(0.95);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+    ">
+      <!-- Close button -->
+      <button id="popup-close" aria-label="Close popup" style="
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        background: none;
+        border: none;
+        font-size: 22px;
+        color: #999;
+        cursor: pointer;
+        transition: color 0.2s;
+        line-height: 1;
+      " onmouseover="this.style.color='#ff0055'" onmouseout="this.style.color='#999'">✕</button>
+
+      <!-- Header -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="
+          width: 50px; height: 50px;
+          background: linear-gradient(135deg, #ff0055, #ff4081);
+          border-radius: 12px;
+          display: flex; align-items: center; justify-content: center;
+          margin: 0 auto 14px;
+        ">
+          <i class="fas fa-envelope" style="color: #fff; font-size: 20px;"></i>
+        </div>
+        <h3 style="font-size: 22px; font-weight: 800; color: #111; margin-bottom: 6px;">Get a Free Quote!</h3>
+        <p style="font-size: 14px; color: #777; line-height: 1.5;">Tell us about your project and we'll get back to you
+          within 24 hours.</p>
+      </div>
+
+      <!-- Form -->
+      <form id="popup-form" style="display: flex; flex-direction: column; gap: 12px;">
+        <input type="text" id="popup-name" placeholder="Your Name" required style="
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 10px;
+          font-size: 14px;
+          font-family: inherit;
+          transition: border-color 0.3s;
+          outline: none;
+        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
+
+        <input type="email" id="popup-email" placeholder="Your Email" required style="
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 10px;
+          font-size: 14px;
+          font-family: inherit;
+          transition: border-color 0.3s;
+          outline: none;
+        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
+
+        <input type="tel" id="popup-phone" placeholder="Phone Number" style="
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 10px;
+          font-size: 14px;
+          font-family: inherit;
+          transition: border-color 0.3s;
+          outline: none;
+        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
+
+        <select id="popup-service" required style="
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 10px;
+          font-size: 14px;
+          font-family: inherit;
+          transition: border-color 0.3s;
+          outline: none;
+          background: #fff;
+          color: #555;
+          cursor: pointer;
+          appearance: auto;
+        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
+          <option value="" disabled selected>Select a Service</option>
+          <option value="Web Design & Development">Web Design & Development</option>
+          <option value="Branding & Identity">Branding & Identity</option>
+          <option value="E-Commerce">E-Commerce</option>
+          <option value="Digital Marketing">Digital Marketing</option>
+          <option value="Others">Others</option>
+        </select>
+
+        <textarea id="popup-message" placeholder="Tell us about your project..." rows="3" style="
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 10px;
+          font-size: 14px;
+          font-family: inherit;
+          resize: none;
+          transition: border-color 0.3s;
+          outline: none;
+        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'"></textarea>
+
+        <button type="submit" style="
+          padding: 14px;
+          background: linear-gradient(135deg, #ff0055, #ff4081);
+          color: #fff;
+          border: none;
+          border-radius: 10px;
+          font-size: 15px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 4px 15px rgba(255, 0, 85, 0.35);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,0,85,0.45)'"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,0,85,0.35)'">
+          Send Message <i class="fas fa-paper-plane" style="margin-left: 6px;"></i>
+        </button>
+      </form>
+
+      <p style="text-align: center; margin-top: 14px; font-size: 12px; color: #aaa;">
+        <i class="fas fa-lock" style="margin-right: 4px;"></i> Your info is safe with us.
+      </p>
+    </div>
+  </div>
+
+  <!-- Popup Script -->
+  <script>
+    (function () {
+      const overlay = document.getElementById('popup-overlay');
+      const box = document.getElementById('popup-box');
+      const closeBtn = document.getElementById('popup-close');
+      const form = document.getElementById('popup-form');
+      const consultBtn = document.getElementById('consult-now-btn');
+
+      function showPopup() {
+        overlay.style.display = 'flex';
+        // Trigger reflow for animation
+        requestAnimationFrame(() => {
+          overlay.style.opacity = '1';
+          box.style.opacity = '1';
+          box.style.transform = 'translateY(0) scale(1)';
+        });
+      }
+
+      function closePopup() {
+        overlay.style.opacity = '0';
+        box.style.transform = 'translateY(30px) scale(0.95)';
+        box.style.opacity = '0';
+        setTimeout(() => { overlay.style.display = 'none'; }, 400);
+      }
+
+      // Auto-show after 5 seconds (only once per session)
+      if (!sessionStorage.getItem('popupShown')) {
+        setTimeout(function () {
+          showPopup();
+          sessionStorage.setItem('popupShown', 'true');
+        }, 5000);
+      }
+
+      // Consult Now button opens popup
+      consultBtn.addEventListener('click', showPopup);
+
+      // Dismiss the Consult Now button
+      var dismissBtn = document.getElementById('consult-dismiss-btn');
+      var consultWrap = document.getElementById('consult-now-wrap');
+      dismissBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        consultWrap.style.transition = 'opacity 0.3s ease';
+        consultWrap.style.opacity = '0';
+        setTimeout(function () { consultWrap.style.display = 'none'; }, 300);
+      });
+
+      // Close on X button
+      closeBtn.addEventListener('click', closePopup);
+
+      // Close on overlay click
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closePopup();
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closePopup();
+      });
+
+      // Form submission → WhatsApp redirect
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('popup-name').value;
+        const email = document.getElementById('popup-email').value;
+        const phone = document.getElementById('popup-phone').value;
+        const service = document.getElementById('popup-service').value;
+        const message = document.getElementById('popup-message').value;
+
+        const text = `Hello! I'd like a free quote.%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0AService: ${encodeURIComponent(service)}%0AMessage: ${encodeURIComponent(message)}`;
+        window.open(`https://wa.me/919326511823?text=${text}`, '_blank');
+        closePopup();
+      });
+    })();
+  </script>
+
 </body>
 
 </html>
