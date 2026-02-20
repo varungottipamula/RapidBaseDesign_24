@@ -1,27 +1,31 @@
-// wait for window load to prioritize content rendering
-window.addEventListener('load', () => {
-  // iOS video autoplay fix
-  const heroVideo = document.querySelector(".hero-video");
-  if (heroVideo) {
-    heroVideo.muted = true;
-    heroVideo.setAttribute("playsinline", "");
-    heroVideo.setAttribute("webkit-playsinline", "");
-    heroVideo.play().catch(() => {
-      // fallback for iOS when autoplay fails
-      heroVideo.setAttribute("controls", "true");
-    });
-  }
-
-
+// Critical UI: Mobile Nav & Typing Effect (Execute Immediately)
+document.addEventListener('DOMContentLoaded', () => {
   /* ---------- NAV TOGGLE for mobile ---------- */
   const navToggle = document.getElementById('nav-toggle');
   const navEl = document.getElementById('site-nav');
-  navToggle.addEventListener('click', () => navEl.classList.toggle('open'));
+  if (navToggle && navEl) {
+    navToggle.addEventListener('click', () => {
+      navEl.classList.toggle('active'); // Use 'active' to match existing CSS or toggle logic
+      // Optional: Icon toggle logic if needed
+      const icon = navToggle.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      }
+    });
 
-  // close nav on link click
-  document.querySelectorAll('#site-nav a').forEach(a => {
-    a.addEventListener('click', () => navEl.classList.remove('open'));
-  });
+    // Close menu when clicking on a link
+    document.querySelectorAll('#site-nav a').forEach(a => {
+      a.addEventListener('click', () => {
+        navEl.classList.remove('active');
+        const icon = navToggle.querySelector('i');
+        if (icon) {
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+  }
 
   /* ---------- TYPING EFFECT (simple) ---------- */
   const lines = [
@@ -55,11 +59,29 @@ window.addEventListener('load', () => {
         setTimeout(type, 350);
       }
     }
-    setTimeout(type, 600);
+    setTimeout(type, 100); // Start faster
   }
 
   // blinking cursor
   setInterval(() => { if (cursor) cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0' }, 500);
+});
+
+// Heavy Visuals: Canvas, GSAP, Video (Defer until simple load)
+window.addEventListener('load', () => {
+  // iOS video autoplay fix
+  const heroVideo = document.querySelector(".hero-video");
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.setAttribute("playsinline", "");
+    heroVideo.setAttribute("webkit-playsinline", "");
+    heroVideo.play().catch(() => {
+      // fallback for iOS when autoplay fails
+      heroVideo.setAttribute("controls", "true");
+    });
+  }
+
+
+
 
   /* ---------- GSAP entrance animations ---------- */
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
