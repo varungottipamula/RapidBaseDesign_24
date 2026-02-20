@@ -1,5 +1,5 @@
-// wait for DOM
-document.addEventListener('DOMContentLoaded', () => {
+// wait for window load to prioritize content rendering
+window.addEventListener('load', () => {
   // iOS video autoplay fix
   const heroVideo = document.querySelector(".hero-video");
   if (heroVideo) {
