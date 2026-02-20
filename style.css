@@ -1317,22 +1317,28 @@ textarea.form-control {
     display: block;
   }
 
-  header nav.open {
-    display: flex;
+  .nav.active {
+    display: flex !important;
     flex-direction: column;
     position: absolute;
     top: 70px;
     left: 0;
     right: 0;
-    background: #000;
+    background: rgba(7, 7, 7, 0.98);
     padding: 20px;
-    gap: 15px;
+    gap: 10px;
     z-index: 999;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
 
-  header nav a {
-    padding: 10px 0;
+  .nav.active a {
+    padding: 12px 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+  }
+
+  .nav.active a:last-child {
+    border-bottom: none;
   }
 
   #nav-toggle {
