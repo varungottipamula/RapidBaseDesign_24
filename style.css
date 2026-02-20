@@ -132,6 +132,15 @@ body {
   color: var(--accent);
   font-size: 24px;
   cursor: pointer;
+  padding: 8px;
+  order: 2;
+  /* Put it after logo but before other things on mobile */
+  transition: transform 0.3s;
+  z-index: 1001;
+}
+
+#nav-toggle:active {
+  transform: scale(0.9);
 }
 
 /* ================= HERO ================= */
@@ -1311,6 +1320,7 @@ textarea.form-control {
 
   .nav {
     display: none;
+    order: 3;
   }
 
   #nav-toggle {
@@ -1321,7 +1331,8 @@ textarea.form-control {
     display: flex !important;
     flex-direction: column;
     position: absolute;
-    top: 70px;
+    top: 100%;
+    /* Dynamically switch to bottom of header */
     left: 0;
     right: 0;
     background: rgba(7, 7, 7, 0.98);
@@ -1329,6 +1340,7 @@ textarea.form-control {
     gap: 10px;
     z-index: 999;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav.active a {

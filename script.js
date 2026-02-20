@@ -1,12 +1,13 @@
 // Critical UI: Mobile Nav & Typing Effect (Execute Immediately)
 document.addEventListener('DOMContentLoaded', () => {
-  /* ---------- NAV TOGGLE for mobile ---------- */
+  /* ---------- MOBILE NAV TOGGLE ---------- */
   const navToggle = document.getElementById('nav-toggle');
   const navEl = document.getElementById('site-nav');
+
   if (navToggle && navEl) {
-    navToggle.addEventListener('click', () => {
-      navEl.classList.toggle('active'); // Use 'active' to match existing CSS or toggle logic
-      // Optional: Icon toggle logic if needed
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navEl.classList.toggle('active');
       const icon = navToggle.querySelector('i');
       if (icon) {
         icon.classList.toggle('fa-bars');
@@ -15,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Close menu when clicking on a link
-    document.querySelectorAll('#site-nav a').forEach(a => {
-      a.addEventListener('click', () => {
+    navEl.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
         navEl.classList.remove('active');
         const icon = navToggle.querySelector('i');
         if (icon) {
@@ -24,6 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
           icon.classList.remove('fa-times');
         }
       });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (navEl.classList.contains('active') && !navEl.contains(e.target) && !navToggle.contains(e.target)) {
+        navEl.classList.remove('active');
+        const icon = navToggle.querySelector('i');
+        if (icon) {
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      }
     });
   }
 
@@ -401,36 +414,7 @@ if (heroVideo) {
   });
 }
 
-/* ================= MOBILE NAVIGATION TOGGLE ================= */
-document.addEventListener('DOMContentLoaded', () => {
-  const navToggle = document.getElementById('nav-toggle');
-  const siteNav = document.getElementById('site-nav');
-
-  if (navToggle && siteNav) {
-    navToggle.addEventListener('click', () => {
-      siteNav.classList.toggle('active');
-      // Change icon
-      const icon = navToggle.querySelector('i');
-      if (icon) {
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-      }
-    });
-
-    // Close menu when clicking on a link
-    const navLinks = siteNav.querySelectorAll('a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        siteNav.classList.remove('active');
-        const icon = navToggle.querySelector('i');
-        if (icon) {
-          icon.classList.add('fa-bars');
-          icon.classList.remove('fa-times');
-        }
-      });
-    });
-  }
-});
+/* (Mobile navigation logic moved to initialization at top of file) */
 
 /* ================= PORTFOLIO LIGHTBOX ================= */
 document.addEventListener('DOMContentLoaded', () => {
