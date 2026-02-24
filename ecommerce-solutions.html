@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Solutions | Rapid Base Design</title>
+    <meta name="description"
+        content="Build high-converting online stores that drive sales. Powerful e-commerce solutions designed for revenue, scalability, and growth.">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #ff0055, #ff4081);
+            --dark-bg: #0b0b0b;
+            --accent: #ff0055;
+        }
+
+        .service-hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(32px, 5vw, 64px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .service-intro {
+            padding: 80px 0;
+            background: #fff;
+            text-align: center;
+        }
+
+        .why-matters {
+            padding: 100px 0;
+            background: #fdfdfd;
+        }
+
+        .matters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .matters-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #f0f0f0;
+        }
+
+        .matters-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .matters-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .matters-card-content {
+            padding: 30px;
+        }
+
+        .matters-card-content h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            color: #111;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            color: #111;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .section-lead {
+            color: #555;
+            font-size: 17px;
+            max-width: 800px;
+            margin: 0 auto 35px;
+            line-height: 1.6;
+        }
+
+        /* Two Column Section */
+        .two-column-section {
+            padding: 120px 0;
+            background: #fff;
+        }
+
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .two-column-grid.reversed {
+            direction: rtl;
+        }
+
+        .two-column-grid.reversed>* {
+            direction: ltr;
+        }
+
+        .column-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .icon-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .icon-list i {
+            color: var(--accent);
+            background: rgba(255, 0, 85, 0.1);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+        /* Image Accordion */
+        .image-accordion {
+            padding: 100px 0;
+            background: var(--dark-bg);
+            color: #fff;
+        }
+
+        .accordion-wrapper {
+            display: flex;
+            height: 500px;
+            gap: 15px;
+            margin-top: 50px;
+        }
+
+        .accordion-item {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            transition: all 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+            cursor: pointer;
+        }
+
+        .accordion-item.active {
+            flex: 5;
+        }
+
+        .accordion-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        .accordion-item.active img {
+            filter: brightness(0.7);
+        }
+
+        .accordion-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s 0.2s;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .accordion-overlay::-webkit-scrollbar {
+            display: none;
+        }
+
+        .accordion-item.active .accordion-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .accordion-title-vertical {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-90deg);
+            white-space: nowrap;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 18px;
+            transition: opacity 0.3s;
+        }
+
+        .accordion-item.active .accordion-title-vertical {
+            opacity: 0;
+        }
+
+        .accordion-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .accordion-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .accordion-list i {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .process-hierarchy {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-num {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin: 0 auto 20px;
+            font-size: 20px;
+            box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
+        }
+
+
+        /* Footer CTA */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--primary-gradient);
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .two-column-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+
+            .two-column-grid.reversed {
+                direction: ltr;
+            }
+
+            .icon-list li {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .accordion-wrapper {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .accordion-item {
+                height: 80px;
+                min-height: 80px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .accordion-item.active {
+                height: auto;
+                min-height: auto;
+            }
+
+            .accordion-item img {
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+            }
+
+            .accordion-overlay {
+                position: relative;
+                padding: 40px 20px;
+                opacity: 1;
+                transform: none;
+                z-index: 2;
+                background: rgba(0, 0, 0, 0.8);
+                display: none;
+                flex-direction: column;
+                justify-content: flex-start;
+                text-align: left;
+            }
+
+            .accordion-item.active .accordion-overlay {
+                display: flex;
+            }
+
+            .accordion-overlay h3 {
+                font-size: 20px !important;
+                margin-bottom: 15px;
+            }
+
+            .accordion-overlay p {
+                font-size: 14px !important;
+                margin-bottom: 10px;
+            }
+
+            .accordion-list {
+                margin: 15px 0;
+            }
+
+            .accordion-list li {
+                font-size: 14px !important;
+                margin-bottom: 8px;
+            }
+
+            .accordion-title-vertical {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                padding: 28px 20px;
+                width: 100%;
+                text-align: center;
+                display: block;
+                z-index: 3;
+            }
+
+            .accordion-item.active .accordion-title-vertical {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.jpeg" alt="Rapid Base Design Logo" class="logo-img" width="40" height="40">
+                <span class="logo-text"><span class="highlight">RAPID</span> BASE <span
+                        class="subtle">DESIGN</span></span>
+            </a>
+            <button id="nav-toggle" aria-label="Toggle Mobile Menu"><i class="fas fa-bars"></i></button>
+            <nav id="site-nav" class="nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </nav>
+            <div class="header-contact">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+919326511823">+91 9326511823</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="service-hero">
+        <div class="container">
+            <span class="section-label" style="color:#fff">E-COMMERCE SERVICES</span>
+            <h1>BUILD HIGH-CONVERTING <br>ONLINE STORES THAT DRIVE SALES</h1>
+            <p style="max-width: 700px; margin: 0 auto; opacity: 0.9; font-size: 18px;">
+                Your online store isn’t just a website, it’s your digital sales engine. We build seamless shopping
+                experiences that turn visitors into loyal customers.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="why-matters">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">WHY YOUR E-COMMERCE STORE MATTERS</h2>
+            <div class="matters-grid">
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=800&q=80"
+                        alt="Revenue">
+                    <div class="matters-card-content">
+                        <h3>Your 24/7 revenue generator</h3>
+                        <p>A store that never closes, processing orders while you sleep.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"
+                        alt="Global Storefront">
+                    <div class="matters-card-content">
+                        <h3>Your global storefront</h3>
+                        <p>Break geographical barriers and reach customers worldwide.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=800&q=80"
+                        alt="Automation">
+                    <div class="matters-card-content">
+                        <h3>Your automated sales system</h3>
+                        <p>Automate ordering, tracking, and customer management.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80"
+                        alt="Brand">
+                    <div class="matters-card-content">
+                        <h3>Your brand experience hub</h3>
+                        <p>Provide a premium shopping environment that builds trust.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=800&q=80"
+                        alt="Retention">
+                    <div class="matters-card-content">
+                        <h3>Your customer retention tool</h3>
+                        <p>Built-in tools to keep users coming back for more.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+                        alt="Accelerate">
+                    <div class="matters-card-content">
+                        <h3>Your growth accelerator</h3>
+                        <p>Scale your product reach and revenue exponentially.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="font-weight: 700; color: #333;">A poorly optimized store loses sales daily. A strategically
+                    built system multiplies revenue.</p>
+                <h3 style="color: var(--accent); font-weight: 900; margin-top: 10px;">WE BUILD STORES THAT SELL.</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="two-column-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 80px;">OUR E-COMMERCE SERVICES</h2>
+
+            <div class="two-column-grid" style="grid-template-columns: 1fr 1fr; gap: 40px;">
+                <div class="column-text">
+                    <span class="section-label">01. STRATEGY</span>
+                    <h3>E-COMMERCE STRATEGY & PLANNING</h3>
+                    <p>Successful online stores begin with strategy. We build your store on a foundation designed for
+                        long-term profitability.</p>
+                    <ul class="icon-list">
+                        <li><i class="fas fa-check"></i> Market & competitor analysis</li>
+                        <li><i class="fas fa-check"></i> Product positioning strategy</li>
+                        <li><i class="fas fa-check"></i> Customer journey mapping</li>
+                        <li><i class="fas fa-check"></i> Conversion funnel planning</li>
+                        <li><i class="fas fa-check"></i> Platform selection guidance</li>
+                        <li><i class="fas fa-check"></i> Revenue model strategy</li>
+                    </ul>
+                </div>
+                <div class="column-text">
+                    <span class="section-label">02. DESIGN</span>
+                    <h3>CUSTOM ONLINE STORE DESIGN</h3>
+                    <p>We design visually engaging and conversion-focused shopping experiences. Your store will look
+                        premium, professional, and easy to shop.</p>
+                    <ul class="icon-list">
+                        <li><i class="fas fa-check"></i> Custom storefront designs</li>
+                        <li><i class="fas fa-check"></i> Mobile-optimized layouts</li>
+                        <li><i class="fas fa-check"></i> Category & product page design</li>
+                        <li><i class="fas fa-check"></i> Conversion-focused product displays</li>
+                        <li><i class="fas fa-check"></i> High-impact CTA structures</li>
+                        <li><i class="fas fa-check"></i> User-friendly navigation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-accordion">
+        <div class="container">
+            <h2 class="section-title" style="color: #fff; text-align: center;">E-COMMERCE DEVELOPMENT SERVICES</h2>
+            <div class="accordion-wrapper">
+                <div class="accordion-item active">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80"
+                        alt="Platform">
+                    <span class="accordion-title-vertical">PLATFORM DEVELOPMENT</span>
+                    <div class="accordion-overlay">
+                        <h3>Platform Development</h3>
+                        <p>We build scalable online stores on:</p>
+                        <ul class="accordion-list">
+                            <li><i class="fas fa-check"></i> Shopify</li>
+                            <li><i class="fas fa-check"></i> WooCommerce</li>
+                            <li><i class="fas fa-check"></i> Custom e-commerce solutions</li>
+                            <li><i class="fas fa-check"></i> Headless commerce setups</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-size: 14px; opacity: 0.9;">We ensure flexibility, performance,
+                            and future scalability.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&w=1200&q=80"
+                        alt="Payment">
+                    <span class="accordion-title-vertical">PAYMENTS & CHECKOUT</span>
+                    <div class="accordion-overlay">
+                        <h3>Payment & Checkout Integration</h3>
+                        <p>Smooth checkout equals higher conversions. We implement:</p>
+                        <ul class="accordion-list">
+                            <li><i class="fas fa-shield-alt"></i> Secure payment gateways</li>
+                            <li><i class="fas fa-coins"></i> Multi-currency support</li>
+                            <li><i class="fas fa-shopping-cart"></i> Custom checkout experiences</li>
+                            <li><i class="fas fa-bolt"></i> Express payment options</li>
+                            <li><i class="fas fa-user-shield"></i> Fraud protection systems</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-size: 14px; opacity: 0.9;">Our goal: reduce cart abandonment
+                            and maximize completed purchases.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
+                        alt="Inventory">
+                    <span class="accordion-title-vertical">PRODUCT & INVENTORY</span>
+                    <div class="accordion-overlay">
+                        <h3>Product & Inventory Systems</h3>
+                        <p>We create structured systems for store management:</p>
+                        <ul class="accordion-list">
+                            <li><i class="fas fa-tasks"></i> Product management dashboards</li>
+                            <li><i class="fas fa-boxes"></i> Inventory tracking systems</li>
+                            <li><i class="fas fa-tags"></i> Variant & SKU management</li>
+                            <li><i class="fas fa-sync-alt"></i> Automated stock updates</li>
+                            <li><i class="fas fa-upload"></i> Bulk product uploads</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-size: 14px; opacity: 0.9;">You stay in control without
+                            complexity.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+                        alt="Optimization">
+                    <span class="accordion-title-vertical">PERFORMANCE</span>
+                    <div class="accordion-overlay">
+                        <h3>Performance Optimization</h3>
+                        <p>Speed and usability directly impact sales. We optimize for:</p>
+                        <ul class="accordion-list">
+                            <li><i class="fas fa-tachometer-alt"></i> Fast loading times</li>
+                            <li><i class="fas fa-mobile-alt"></i> Mobile performance</li>
+                            <li><i class="fas fa-chart-line"></i> Conversion rate optimization (CRO)</li>
+                            <li><i class="fas fa-user-check"></i> UX improvements</li>
+                            <li><i class="fas fa-search"></i> Technical SEO structure</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-size: 14px; opacity: 0.9;">Your store will be built for both
+                            users and search engines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="growth-scalability" style="padding: 100px 0; background: #fff8fb;">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">E-COMMERCE GROWTH & SCALABILITY</h2>
+            <p class="section-lead" style="text-align: center; margin-bottom: 50px;">
+                We build online stores that aren't just functional today, but ready for your business tomorrow.
+            </p>
+            <div class="matters-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-chart-line"
+                        style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Conversion-focused</h4>
+                </div>
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-mobile-alt"
+                        style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Mobile-first</h4>
+                </div>
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-search-dollar"
+                        style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>SEO-ready</h4>
+                </div>
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-shield-alt"
+                        style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Secure & Scalable</h4>
+                </div>
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-robot" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Automation-enabled</h4>
+                </div>
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-sync" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Built for repeat purchases</h4>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 40px; font-weight: 600; color: #555;">
+                We also integrate analytics tools so you can track revenue, user behavior, and growth opportunities.
+            </p>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">OUR DEVELOPMENT PROCESS</h2>
+            <div class="process-hierarchy">
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <h4>Discovery</h4>
+                    <p>We understand your products, target market, and goals.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <h4>Architecture</h4>
+                    <p>Defining navigation, categories, and funnel strategy.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <h4>Design</h4>
+                    <p>Visual concepts focused on conversion and UX.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <h4>Development</h4>
+                    <p>Building the store and integrating payment systems.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">5</div>
+                    <h4>Testing</h4>
+                    <p>Payment validation, mobile and security testing.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">6</div>
+                    <h4>Launch</h4>
+                    <p>Smooth deployment and ongoing growth support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="who-we-work-with" style="padding: 100px 0; background: #fff;">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">WHO WE WORK WITH</h2>
+            <div class="custom-grid" style="margin-top: 40px; justify-content: center;">
+                <div class="custom-item">Product-based businesses</div>
+                <div class="custom-item">Startups launching new products</div>
+                <div class="custom-item">Growing e-commerce brands</div>
+                <div class="custom-item">Retail businesses going online</div>
+                <div class="custom-item">D2C brands</div>
+                <div class="custom-item">Established companies expanding</div>
+            </div>
+            <p
+                style="margin-top: 40px; font-size: 18px; color: #555; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Whether you're launching your first product or scaling an established store, we create systems designed
+                for measurable growth.
+            </p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">WHY CHOOSE <span class="highlight">RAPID BASE
+                    DESIGN?</span></h2>
+            <p class="section-lead" style="text-align: center;">We don't just build, we plan for profit. Every element
+                is designed to drive revenue.</p>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Strategy-driven development</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        We don't just build, we plan for profit. Every element is designed to drive revenue.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Conversion-optimized design</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        Design that guides customers and encourages them to complete purchases seamlessly.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Secure & Scalable Architecture</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        Stores that can handle traffic spikes and grow as your business expands.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Ongoing Support</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        Transparent communication and continuous optimization to keep you ahead.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>READY TO LAUNCH AN ONLINE STORE THAT SELLS?</h2>
+            <p style="font-size: 20px; opacity: 0.9; margin-bottom: 40px;">
+                Let’s build an e-commerce platform that strengthens your brand and drives consistent revenue.
+            </p>
+            <a href="contact.html" class="btn primary white-text"
+                style="background: #fff; color: var(--accent); padding: 20px 40px; font-weight: 800;">START YOUR PROJECT
+                TODAY</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+
+            <!-- Col 1: Brand -->
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo"><span class="highlight">RAPID</span> BASE <span class="highlight">DESIGN</span>
+                </h3>
+                <p>We are a full-service digital agency helping brands to success in the digital world. Innovation is
+                    our
+                    passion.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/18Mv5z8vWC/?mibextid=wwXIfr"
+                        aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/rapidbasedesign_?igsh=Yjg3Y3RzeW1yNmtk"
+                        aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://pin.it/6u8ggenYj" aria-label="Follow us on Pinterest"><i
+                            class="fab fa-pinterest"></i></a>
+                    <a href="https://www.linkedin.com/in/rapid-base-design-b5b264383?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2: Useful Links -->
+            <div class="footer-col">
+                <h4>EXPLORE</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Contact Us -->
+            <div class="footer-col">
+                <h4>CONTACT US</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-phone-alt"></i> <a href="tel:+919326511823"
+                            style="color: inherit; text-decoration: none;">+91 9326511823</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:rapidbasedesign1@gmail.com"
+                            style="color: inherit; text-decoration: none;">rapidbasedesign1@gmail.com</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Newsletter -->
+            <div class="footer-col">
+                <h4>NEWSLETTER</h4>
+                <p>Subscribe to get the latest news and updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit">GO</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-disclaimer">Disclaimer :- All designs are created for professional use, but results may
+                vary
+                depending on strategy, market conditions, and client implementation. Rapid Base Design is not liable
+                for
+                outcomes or third-party platform issues.</p>
+            <p>© 2025 Rapid Base Design. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp + Call Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/919326511823?text=Hello%2C%20I%20am%20interested%20in%20your%20services."
+            class="float-btn float-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+        </a>
+        <a href="tel:+919326511823" class="float-btn float-call" aria-label="Call us">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+            </svg>
+        </a>
+    </div>
+
+
+    <!-- POPUP FORM -->
+    <div id="popup-overlay" style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  ">
+        <div id="popup-box" style="
+      background: #fff;
+      border-radius: 16px;
+      max-width: 420px;
+      width: 90%;
+      padding: 36px 28px 28px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: translateY(30px) scale(0.95);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+    ">
+            <!-- Close button -->
+            <button id="popup-close" aria-label="Close popup" style="
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        background: none;
+        border: none;
+        font-size: 22px;
+        color: #999;
+        cursor: pointer;
+        transition: color 0.2s;
+        line-height: 1;
+      " onmouseover="this.style.color='#ff0055'" onmouseout="this.style.color='#999'">✕</button>
+
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="
+          width: 50px; height: 50px;
+          background: linear-gradient(135deg, #ff0055, #ff4081);
+          border-radius: 12px;
+          display: flex; align-items: center; justify-content: center;
+          margin: 0 auto 14px;
+        ">
+                    <i class="fas fa-envelope" style="color: #fff; font-size: 20px;"></i>
+                </div>
+                <h3 style="font-size: 22px; font-weight: 800; color: #111; margin-bottom: 6px;">Get a Free Quote!</h3>
+                <p style="font-size: 14px; color: #777; line-height: 1.5;">Tell us about your project and we'll get back
+                    to you
+                    within 24 hours.</p>
+            </div>
+
+            <!-- Form -->
+            <form id="popup-form" style="display: flex; flex-direction: column; gap: 12px;">
+                <input type="text" id="popup-name" placeholder="Your Name" required style="
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 10px;
+          font-size: 14px;
+          font-family: inherit;
+          transition: border-color 0.3s;
+          outline: none;
+        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
+
+                <input type="email" id="popup-email" placeholder="Your Email" required style="
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 10px;
+          font-size: 14px;
+          font-family: inherit;
+          transition: border-color 0.3s;
+          outline: none;
+        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
+
+                <input type="tel" id="popup-phone" placeholder="Phone Number" style="
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 10px;
+          font-size: 14px;
+          font-family: inherit;
+          transition: border-color 0.3s;
+          outline: none;
+        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
+
+                <select id="popup-service" required style="
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 10px;
+          font-size: 14px;
+          font-family: inherit;
+          transition: border-color 0.3s;
+          outline: none;
+          background: #fff;
+          color: #555;
+          cursor: pointer;
+          appearance: auto;
+        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
+                    <option value="" disabled selected>Select a Service</option>
+                    <option value="Web Design & Development">Web Design & Development</option>
+                    <option value="Branding & Identity">Branding & Identity</option>
+                    <option value="E-Commerce">E-Commerce</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                    <option value="Others">Others</option>
+                </select>
+
+                <textarea id="popup-message" placeholder="Tell us about your project..." rows="3" style="
+          padding: 12px 14px;
+          border: 1.5px solid #e0e0e0;
+          border-radius: 10px;
+          font-size: 14px;
+          font-family: inherit;
+          resize: none;
+          transition: border-color 0.3s;
+          outline: none;
+        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'"></textarea>
+
+                <button type="submit" style="
+          padding: 14px;
+          background: linear-gradient(135deg, #ff0055, #ff4081);
+          color: #fff;
+          border: none;
+          border-radius: 10px;
+          font-size: 15px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 4px 15px rgba(255, 0, 85, 0.35);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,0,85,0.45)'"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,0,85,0.35)'">
+                    Send Message <i class="fas fa-paper-plane" style="margin-left: 6px;"></i>
+                </button>
+            </form>
+
+            <p style="text-align: center; margin-top: 14px; font-size: 12px; color: #aaa;">
+                <i class="fas fa-lock" style="margin-right: 4px;"></i> Your info is safe with us.
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Consult Now popup logic
+        (function () {
+            const overlay = document.getElementById('popup-overlay');
+            const box = document.getElementById('popup-box');
+            const closeBtn = document.getElementById('popup-close');
+            const form = document.getElementById('popup-form');
+            const consultBtn = document.getElementById('consult-now-btn');
+
+            function showPopup() {
+                overlay.style.display = 'flex';
+                requestAnimationFrame(() => {
+                    overlay.style.opacity = '1';
+                    box.style.opacity = '1';
+                    box.style.transform = 'translateY(0) scale(1)';
+                });
+            }
+
+            function closePopup() {
+                overlay.style.opacity = '0';
+                box.style.transform = 'translateY(30px) scale(0.95)';
+                box.style.opacity = '0';
+                setTimeout(() => { overlay.style.display = 'none'; }, 400);
+            }
+
+            if (!sessionStorage.getItem('popupShown')) {
+                setTimeout(function () {
+                    showPopup();
+                    sessionStorage.setItem('popupShown', 'true');
+                }, 5000);
+            }
+
+            if (consultBtn) consultBtn.addEventListener('click', showPopup);
+
+            var dismissBtn = document.getElementById('consult-dismiss-btn');
+            var consultWrap = document.getElementById('consult-now-wrap');
+            if (dismissBtn && consultWrap) {
+                dismissBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    consultWrap.style.transition = 'opacity 0.3s ease';
+                    consultWrap.style.opacity = '0';
+                    setTimeout(function () { consultWrap.style.display = 'none'; }, 300);
+                });
+            }
+
+            if (closeBtn) closeBtn.addEventListener('click', closePopup);
+            if (overlay) overlay.addEventListener('click', (e) => { if (e.target === overlay) closePopup(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
+
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById('popup-name').value;
+                    const email = document.getElementById('popup-email').value;
+                    const phone = document.getElementById('popup-phone').value;
+                    const service = document.getElementById('popup-service').value;
+                    const message = document.getElementById('popup-message').value;
+
+                    const text = `Hello! I'd like a free quote.%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0AService: ${encodeURIComponent(service)}%0AMessage: ${encodeURIComponent(message)}`;
+                    window.open(`https://wa.me/919326511823?text=${text}`, '_blank');
+                    closePopup();
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>

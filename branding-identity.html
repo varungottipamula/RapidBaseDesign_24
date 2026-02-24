@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branding & Identity | Rapid Base Design</title>
+    <meta name="description"
+        content="Build memorable brands that stand out and scale. We create strategic brand identities that connect, communicate, and convert your audience.">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles for Branding & Identity page */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #ff0055, #ff4081);
+            --dark-bg: #0b0b0b;
+        }
+
+        .service-hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)), url('images/identity.png');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(32px, 5vw, 64px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .service-hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .why-matters {
+            padding: 100px 0;
+            background: #f9f9f9;
+        }
+
+        .matters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .matters-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .matters-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .matters-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .matters-card-content {
+            padding: 24px;
+        }
+
+        .matters-card-content h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            color: #111;
+        }
+
+        .section-label {
+            color: #ff0055;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            color: #111;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .white-text {
+            color: #ffffff !important;
+        }
+
+        .section-lead {
+            color: #555;
+            font-size: 17px;
+            max-width: 800px;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        /* Two Column Section */
+        .two-column-section {
+            padding: 120px 0;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .two-column-grid {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .two-column-grid:not(:last-child) {
+            margin-bottom: 140px;
+        }
+
+        .column-text,
+        .column-image,
+        .column-points {
+            flex: 1;
+        }
+
+        .column-points {
+            background: #fdfdfd;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .column-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+
+        .icon-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .icon-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .icon-list i {
+            color: #ff0055;
+            font-size: 14px;
+            width: 32px;
+            height: 32px;
+            background: #fff0f5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(255, 0, 85, 0.1);
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 992px) {
+            .two-column-grid {
+                flex-direction: column !important;
+                gap: 50px;
+                text-align: center;
+            }
+
+            .column-points {
+                padding: 30px 20px;
+                width: 100%;
+            }
+
+            .icon-list {
+                text-align: left;
+            }
+        }
+
+        /* Image Accordion */
+        .image-accordion {
+            padding: 100px 0;
+            background: var(--dark-bg);
+            color: #fff;
+        }
+
+        .image-accordion .section-title {
+            color: #fff;
+        }
+
+        .image-accordion .section-lead {
+            color: #bbb;
+        }
+
+        .accordion-wrapper {
+            display: flex;
+            height: 500px;
+            width: 100%;
+            gap: 10px;
+            margin-top: 50px;
+        }
+
+        .accordion-item {
+            position: relative;
+            flex: 1;
+            overflow: hidden;
+            border-radius: 12px;
+            transition: flex 0.6s ease;
+            cursor: pointer;
+        }
+
+        .accordion-item.active {
+            flex: 4;
+        }
+
+        .accordion-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            transition: filter 0.3s;
+        }
+
+        .accordion-item.active img {
+            filter: brightness(0.8);
+        }
+
+        .accordion-content {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s, transform 0.4s;
+        }
+
+        .accordion-item.active .accordion-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .accordion-content h3 {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .accordion-content li {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .accordion-content li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #ff0055;
+            font-size: 10px;
+        }
+
+        .accordion-title-vertical {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-90deg);
+            white-space: nowrap;
+            font-size: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: opacity 0.3s;
+        }
+
+        .accordion-item.active .accordion-title-vertical {
+            opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-wrapper {
+                flex-direction: column;
+                height: auto;
+                gap: 15px;
+            }
+
+            .accordion-item {
+                height: 120px;
+                flex: none;
+                width: 100%;
+            }
+
+            .accordion-item.active {
+                height: 380px;
+            }
+
+            .accordion-title-vertical {
+                transform: translate(-50%, -50%);
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+
+            .accordion-content {
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+            }
+
+            .accordion-content h3 {
+                font-size: 18px;
+            }
+
+            .accordion-content li {
+                font-size: 13px;
+            }
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .process-hierarchy {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            min-width: 220px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
+        }
+
+        .process-step h4 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .process-step p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .process-hierarchy::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            right: 40px;
+            height: 2px;
+            background: #eee;
+            z-index: 1;
+        }
+
+        @media (max-width: 992px) {
+            .process-hierarchy::before {
+                display: none;
+            }
+        }
+
+
+        .who-work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .who-work-item {
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+            border: 1px solid #eee;
+            transition: all 0.3s;
+        }
+
+        .who-work-item:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* CTA Section */
+        .cta-banner {
+            padding: 100px 0;
+            background: var(--primary-gradient);
+            color: #fff;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-banner h2 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .cta-banner p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.jpeg" alt="Rapid Base Design Logo" class="logo-img" width="40" height="40">
+                <span class="logo-text"><span class="highlight">RAPID</span> BASE <span
+                        class="subtle">DESIGN</span></span>
+            </a>
+
+            <button id="nav-toggle" aria-label="Toggle Mobile Navigation Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="site-nav" class="nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </nav>
+
+            <div class="header-contact">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+919326511823">+91 9326511823</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="service-hero">
+        <div class="container">
+            <span class="section-label">Branding & Identity</span>
+            <h1>Build Memorable Brands That Stand Out & Scale</h1>
+            <p>At Rapid Base Design, we create strategic brand identities that connect, communicate, and convert. Your
+                brand is more than a logo, it’s how people feel about your business. We combine research, creativity,
+                and positioning strategy to build brands that leave lasting impressions and drive long-term growth.</p>
+        </div>
+    </section>
+
+    <!-- WHY YOUR BRAND IDENTITY MATTERS -->
+    <section class="section why-matters">
+        <div class="container">
+            <h2 class="section-title">Why Your <span class="highlight">Brand Identity Matters</span></h2>
+            <p class="section-lead">In today’s competitive market, a weak brand gets ignored. A strong brand builds
+                loyalty, authority, and revenue.</p>
+
+            <div class="matters-grid">
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=600&q=80"
+                        alt="Emotional Connection">
+                    <div class="matters-card-content">
+                        <h3>Emotional Connection</h3>
+                        <p>Your first emotional connection with customers starts here. Build a bond that lasts.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80"
+                        alt="Visual Credibility">
+                    <div class="matters-card-content">
+                        <h3>Visual Credibility</h3>
+                        <p>Professional visual credibility that builds immediate trust and sets expectations.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80"
+                        alt="Market Positioning">
+                    <div class="matters-card-content">
+                        <h3>Market Positioning</h3>
+                        <p>Your market positioning tool to define where you stand in a crowded marketplace.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1518349619113-03114f06ac3a?auto=format&fit=crop&w=600&q=80"
+                        alt="Competitive Advantage">
+                    <div class="matters-card-content">
+                        <h3>Competitive Advantage</h3>
+                        <p>Your competitive advantage. Stand out from the noise with a unique brand voice.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=600&q=80"
+                        alt="Recognition Factor">
+                    <div class="matters-card-content">
+                        <h3>Recognition Factor</h3>
+                        <p>Increase your recognition factor. Be the first brand that comes to mind in your niche.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80"
+                        alt="Trust-Building System">
+                    <div class="matters-card-content">
+                        <h3>Trust-Building System</h3>
+                        <p>Your trust-building system. Consistent branding ensures customers feel secure choosing you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR BRANDING SERVICES -->
+    <section class="section two-column-section">
+        <div class="container">
+            <h2 class="section-title">Our Branding <span class="highlight">Services</span></h2>
+            <p class="section-lead">A comprehensive approach to building brand identity from the ground up.</p>
+
+            <!-- Brand Strategy Development -->
+            <div class="two-column-grid">
+                <div class="column-text">
+                    <span class="section-label">STRATEGIC PLANNING</span>
+                    <h2 class="section-title">Brand Strategy Development</h2>
+                    <p>Before design, we define clarity. Every strong brand starts with a solid strategic foundation,
+                        ensuring every visual element serves a business purpose.</p>
+                </div>
+                <div class="column-points">
+                    <ul class="icon-list">
+                        <li><i class="fas fa-lightbulb"></i> <span>Brand discovery workshops</span></li>
+                        <li><i class="fas fa-search"></i> <span>Market & competitor research</span></li>
+                        <li><i class="fas fa-users"></i> <span>Target audience profiling</span></li>
+                        <li><i class="fas fa-location-arrow"></i> <span>Brand positioning strategy</span></li>
+                        <li><i class="fas fa-eye"></i> <span>Brand mission & vision clarity</span></li>
+                        <li><i class="fas fa-gem"></i> <span>Core value definition</span></li>
+                        <li><i class="fas fa-star"></i> <span>Unique value proposition</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Visual Identity Design -->
+            <div class="two-column-grid reversed">
+                <div class="column-text">
+                    <span class="section-label">CREATIVE EXECUTION</span>
+                    <h2 class="section-title">Visual Identity Design</h2>
+                    <p>We create cohesive and powerful visual systems that represent your brand consistently across all
+                        platforms, ensuring you remain professional and distinctive.</p>
+                </div>
+                <div class="column-points">
+                    <ul class="icon-list">
+                        <li><i class="fas fa-pen-nib"></i> <span>Logo design (Primary, secondary & icon)</span></li>
+                        <li><i class="fas fa-font"></i> <span>Typography systems</span></li>
+                        <li><i class="fas fa-palette"></i> <span>Brand color palette</span></li>
+                        <li><i class="fas fa-compass"></i> <span>Visual style direction</span></li>
+                        <li><i class="fas fa-shapes"></i> <span>Iconography</span></li>
+                        <li><i class="fas fa-image"></i> <span>Image & graphic guidelines</span></li>
+                        <li><i class="fas fa-border-all"></i> <span>Brand pattern design</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR IDENTITY DESIGN SERVICES - IMAGE ACCORDION -->
+    <section class="section image-accordion">
+        <div class="container">
+            <h2 class="section-title"><span class="white-text">Our Identity Design</span> <span
+                    class="highlight">Services</span></h2>
+            <p class="section-lead">Deep dive into the specific elements we craft for your brand.</p>
+
+            <div class="accordion-wrapper" id="identity-accordion">
+                <!-- Logo Design -->
+                <div class="accordion-item active">
+                    <div class="accordion-title-vertical">Logo Design</div>
+                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"
+                        alt="Logo Design">
+                    <div class="accordion-content">
+                        <h3>Logo Design</h3>
+                        <ul>
+                            <li>Custom logo concepts</li>
+                            <li>Minimal & modern logo styles</li>
+                            <li>Icon-based logos</li>
+                            <li>Wordmarks & lettermarks</li>
+                            <li>Brand symbol creation</li>
+                            <li>Scalable vector formats</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Brand Guidelines -->
+                <div class="accordion-item">
+                    <div class="accordion-title-vertical">Brand Guidelines</div>
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80"
+                        alt="Brand Guidelines">
+                    <div class="accordion-content">
+                        <h3>Brand Guidelines</h3>
+                        <ul>
+                            <li>Logo usage rules</li>
+                            <li>Color codes & applications</li>
+                            <li>Typography rules</li>
+                            <li>Spacing & layout standards</li>
+                            <li>Visual consistency systems</li>
+                            <li>Do’s and don’ts documentation</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Corporate Identity -->
+                <div class="accordion-item">
+                    <div class="accordion-title-vertical">Corporate Identity</div>
+                    <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=1200&q=80"
+                        alt="Corporate Identity">
+                    <div class="accordion-content">
+                        <h3>Corporate Identity</h3>
+                        <ul>
+                            <li>Business cards</li>
+                            <li>Letterheads</li>
+                            <li>Email signatures</li>
+                            <li>Company profiles</li>
+                            <li>Presentation templates</li>
+                            <li>Social media branding kits</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Brand Messaging -->
+                <div class="accordion-item">
+                    <div class="accordion-title-vertical">Brand Messaging</div>
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80"
+                        alt="Brand Messaging">
+                    <div class="accordion-content">
+                        <h3>Brand Messaging & Voice</h3>
+                        <ul>
+                            <li>Brand tone of voice</li>
+                            <li>Tagline creation</li>
+                            <li>Brand story development</li>
+                            <li>Elevator pitch</li>
+                            <li>Messaging framework</li>
+                            <li>Communication style guide</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDING PROCESS -->
+    <section class="section process-section">
+        <div class="container">
+            <h2 class="section-title">Our Branding <span class="highlight">Process</span></h2>
+            <p class="section-lead">A structured hierarchy for building award-winning brand identities.</p>
+
+            <div class="process-hierarchy">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h4>Discovery & Research</h4>
+                    <p>We analyze your industry, competitors, audience, and brand goals.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h4>Strategy & Positioning</h4>
+                    <p>We define your unique positioning, values, and brand direction.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h4>Concept Development</h4>
+                    <p>We create multiple creative directions aligned with your strategy.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h4>Design Execution</h4>
+                    <p>We refine and finalize visual identity elements.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <h4>Guidelines Creation</h4>
+                    <p>We document your identity system for consistency and scalability.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">06</div>
+                    <h4>Launch & Rollout</h4>
+                    <p>Implementing your brand across platforms and marketing materials.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND PERFORMANCE -->
+    <section class="section why-matters">
+        <div class="container">
+            <h2 class="section-title">Brand Performance & <span class="highlight">Positioning</span></h2>
+            <p class="section-lead">We build brands that are visually consistent and built for long-term growth.</p>
+
+            <div class="matters-grid">
+                <div class="matters-card">
+                    <div class="matters-card-content" style="text-align: center;">
+                        <i class="fas fa-brain" style="font-size: 40px; color: var(--accent); margin-bottom: 20px;"></i>
+                        <h3>Memorable</h3>
+                        <p>Brands that are etched into the memory of your target audience.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <div class="matters-card-content" style="text-align: center;">
+                        <i class="fas fa-chess" style="font-size: 40px; color: var(--accent); margin-bottom: 20px;"></i>
+                        <h3>Strategically Positioned</h3>
+                        <p>Defining your unique space in the competitive market landscape.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <div class="matters-card-content" style="text-align: center;">
+                        <i class="fas fa-heart" style="font-size: 40px; color: var(--accent); margin-bottom: 20px;"></i>
+                        <h3>Emotionally Engaging</h3>
+                        <p>Connecting with your customers on a deeper, more human level.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <div class="matters-card-content" style="text-align: center;">
+                        <i class="fas fa-chart-line"
+                            style="font-size: 40px; color: var(--accent); margin-bottom: 20px;"></i>
+                        <h3>Market-Differentiated</h3>
+                        <p>Providing a clear reason why customers should choose you over others.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="process-section" style="background: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Why Choose <span class="highlight">Rapid Base Design?</span></h2>
+            <p class="section-lead">We don’t just design logos — we build brands that lead industries.</p>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Strategy-first branding approach</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        We don't start with colors; we start with objectives. Every design element is backed by research
+                        and strategic intent.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Fully custom identity systems</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        No generic templates. Your brand identity is built from scratch to reflect your unique ambition
+                        and vision.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Research-backed positioning</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        We analyze your market and competitors to find the whitespace where your brand can truly stand
+                        out and dominate.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Modern & scalable design</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        Our designs are crafted to look great today and remain effective as your business scales and
+                        markets evolve.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO WE WORK WITH -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Who We <span class="highlight">Work With</span></h2>
+            <div class="who-work-grid">
+                <div class="who-work-item">Startups</div>
+                <div class="who-work-item">Growing businesses</div>
+                <div class="who-work-item">E-commerce brands</div>
+                <div class="who-work-item">Service-based companies</div>
+                <div class="who-work-item">Personal brands</div>
+                <div class="who-work-item">Corporate organizations</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Ready to Build a Brand That Stands Out?</h2>
+            <p>Let’s craft a powerful brand identity that builds trust, attracts customers, and strengthens your market
+                position.</p>
+            <a href="contact.html" class="btn primary" style="background: #fff; color: var(--accent);">Start Your
+                Branding Project Today</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="cards footer-inner">
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo"><span class="highlight">RAPID</span> BASE <span class="highlight">DESIGN</span>
+                </h3>
+                <p>We build digital products that help businesses grow and succeed in the modern world.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/18Mv5z8vWC/?mibextid=wwXIfr" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/rapidbasedesign_?igsh=Yjg3Y3RzeW1yNmtk" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://pin.it/6u8ggenYj" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="https://www.linkedin.com/in/rapid-base-design-b5b264383?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>EXPLORE</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>CONTACT</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-phone"></i> <a href="tel:+919326511823"
+                            style="color: inherit; text-decoration: none;">+91 9326511823</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:rapidbasedesign1@gmail.com"
+                            style="color: inherit; text-decoration: none;">rapidbasedesign1@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>NEWSLETTER</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit">GO</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-disclaimer">Disclaimer :- All designs are created for professional use, but results may
+                vary depending on strategy, market conditions, and client implementation. Rapid Base Design is not
+                liable for outcomes or third-party platform issues.</p>
+            <p>&copy; 2025 Rapid Base Design. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp + Call Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/919326511823?text=Hello%2C%20I%20am%20interested%20in%20your%20services."
+            class="float-btn float-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+        </a>
+        <a href="tel:+919326511823" class="float-btn float-call" aria-label="Call us">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+            </svg>
+        </a>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Image Accordion Logic
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        accordionItems.forEach(item => {
+            item.addEventListener('click', () => {
+                accordionItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

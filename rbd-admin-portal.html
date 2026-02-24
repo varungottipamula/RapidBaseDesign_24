@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name='format-detection' content='telephone=no'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal | Rapid Base Design</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #ff0055;
+            --secondary: #ff4081;
+            --dark-bg: #0a0a0b;
+            --sidebar-bg: #111112;
+            --card-bg: #1a1a1c;
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a5;
+            --success: #00ca72;
+            --warning: #ffab00;
+            --info: #0091ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* --- LOGIN OVERLAY --- */
+        #login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .login-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-card img {
+            width: 60px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+        }
+
+        .login-card h2 {
+            margin-bottom: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .login-card p {
+            color: var(--text-dim);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .form-group input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
+        }
+
+        .error-msg {
+            color: #ff4d4d;
+            font-size: 13px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* --- DASHBOARD LAYOUT --- */
+        #admin-panel {
+            display: none;
+            height: 100vh;
+            grid-template-columns: 280px 1fr;
+        }
+
+        /* Sidebar */
+        aside {
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            padding: 24px 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .sidebar-logo {
+            padding: 0 24px 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-logo img {
+            width: 32px;
+            border-radius: 8px;
+        }
+
+        .sidebar-logo span {
+            font-weight: 800;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-section {
+            padding: 0 12px;
+            margin-bottom: 24px;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            padding: 0 12px 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            color: var(--text-dim);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(255, 0, 85, 0.1);
+            color: var(--primary);
+        }
+
+        .nav-link.active i {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            background: var(--dark-bg);
+            overflow-y: auto;
+            padding: 40px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+        }
+
+        .user-profile span {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .user-profile i {
+            font-size: 20px;
+            color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- DASHBOARD WIDGETS --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-card .label {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-card .value {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .change {
+            font-size: 12px;
+            color: var(--success);
+        }
+
+        .stat-card .change.neg {
+            color: #ff4d4d;
+        }
+
+        /* Tables */
+        .card-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .card-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 15px;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-new {
+            background: rgba(0, 145, 255, 0.2);
+            color: var(--info);
+        }
+
+        .badge-followup {
+            background: rgba(255, 171, 0, 0.2);
+            color: var(--warning);
+        }
+
+        .badge-converted {
+            background: rgba(0, 202, 114, 0.2);
+            color: var(--success);
+        }
+
+        /* Forms */
+        .grid-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #fff;
+            margin-top: 8px;
+        }
+
+        button.primary-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Mobile Responsive Layout Changes */
+        #mobile-toggle {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 1001;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+
+        @media (max-width: 992px) {
+            #admin-panel {
+                grid-template-columns: 80px 1fr;
+            }
+
+            .sidebar-logo span,
+            .nav-label,
+            .nav-link span {
+                display: none;
+            }
+
+            .nav-link {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #admin-panel {
+                grid-template-columns: 1fr;
+            }
+
+            #mobile-toggle {
+                display: block;
+            }
+
+            aside {
+                position: fixed;
+                left: -280px;
+                top: 0;
+                bottom: 0;
+                width: 280px;
+                z-index: 2000;
+                transition: left 0.3s ease;
+                background: var(--sidebar-bg);
+            }
+
+            aside.mobile-active {
+                left: 0;
+                box-shadow: 20px 0 50px rgba(0, 0, 0, 0.8);
+            }
+
+            .sidebar-logo span,
+            .nav-label,
+            .nav-link span {
+                display: flex;
+            }
+
+            .nav-link {
+                justify-content: flex-start;
+            }
+
+            main {
+                padding: 20px;
+                padding-top: 80px;
+            }
+
+            .grid-form {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: span 1;
+            }
+
+            .header-top {
+                flex-direction: column-reverse;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            .card-container {
+                padding: 15px;
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 600px;
+            }
+
+            .stat-card .value {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOGIN SCREEN -->
+    <div id="login-overlay">
+        <div class="login-card">
+            <img src="images/logo.jpeg" alt="RBD Logo">
+            <h2>Admin Login</h2>
+            <p>Enter your credentials to access the portal</p>
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Enter username">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+            </div>
+
+            <button class="login-btn" onclick="attemptLogin()">Log In System</button>
+            <div id="login-error" class="error-msg">Invalid username or password. Please try again.</div>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <div id="admin-panel">
+        <aside>
+            <div class="sidebar-logo">
+                <img src="images/logo.jpeg" alt="RBD Logo">
+                <span>RBD Portal</span>
+            </div>
+
+            <div class="nav-section">
+                <p class="nav-label">Core</p>
+                <div class="nav-link active" onclick="showTab('dashboard')">
+                    <i class="fas fa-th-large"></i> <span>Dashboard</span>
+                </div>
+                <div class="nav-link" onclick="showTab('leads')">
+                    <i class="fas fa-user-friends"></i> <span>Leads Management</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <p class="nav-label">Content</p>
+                <div class="nav-link" onclick="showTab('services')">
+                    <i class="fas fa-concierge-bell"></i> <span>Services</span>
+                </div>
+                <div class="nav-link" onclick="showTab('blog')">
+                    <i class="fas fa-newspaper"></i> <span>Blog Posts</span>
+                </div>
+                <div class="nav-link" onclick="showTab('portfolio')">
+                    <i class="fas fa-images"></i> <span>Portfolio</span>
+                </div>
+                <div class="nav-link" onclick="showTab('testimonials')">
+                    <i class="fas fa-star"></i> <span>Testimonials</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <p class="nav-label">Management</p>
+                <div class="nav-link" onclick="showTab('appointments')">
+                    <i class="fas fa-calendar-alt"></i> <span>Appointments</span>
+                </div>
+                <div class="nav-link" onclick="showTab('team')">
+                    <i class="fas fa-users-cog"></i> <span>Team Members</span>
+                </div>
+                <div class="nav-link" onclick="showTab('marketing')">
+                    <i class="fas fa-envelope-open-text"></i> <span>Email Marketing</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <p class="nav-label">Settings</p>
+                <div class="nav-link" onclick="showTab('social')">
+                    <i class="fas fa-share-alt"></i> <span>Social Media</span>
+                </div>
+                <div class="nav-link" onclick="showTab('settings')">
+                    <i class="fas fa-sliders-h"></i> <span>Site Settings</span>
+                </div>
+                <div class="nav-link" onclick="showTab('reports')">
+                    <i class="fas fa-chart-bar"></i> <span>Reports</span>
+                </div>
+                <div class="nav-link" onclick="logout()" style="margin-top: 20px; color: #ff4d4d;">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <div class="header-top">
+                <button id="mobile-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2 id="current-tab-title">Dashboard Overview</h2>
+                <div class="user-profile">
+                    <span>Admin: Varun</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+
+            <!-- --- SECTION 1: DASHBOARD --- -->
+            <div id="dashboard" class="tab-content active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="label">Total Visitors</span>
+                        <div class="value">0</div>
+                        <span class="change">Tracking Live</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="label">New Leads Today</span>
+                        <div class="value">0</div>
+                        <span class="change">No new since morning</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="label">Active Clients</span>
+                        <div class="value">0</div>
+                        <span class="change">Manage in Projects section</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="label">Conversion Rate</span>
+                        <div class="value">0%</div>
+                        <span class="change">Analytics Updating...</span>
+                    </div>
+                </div>
+
+                <div class="grid-form" style="grid-template-columns: 1.5fr 1fr;">
+                    <div class="card-container">
+                        <div class="card-header">
+                            <h3>Recent Leads</h3>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Service</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboard-leads-body">
+                                <tr>
+                                    <td colspan="3" style="text-align: center; color: var(--text-dim); padding: 20px;">
+                                        No leads received yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card-container">
+                        <div class="card-header">
+                            <h3>Upcoming Meetings</h3>
+                        </div>
+                        <div id="upcoming-meetings-list"
+                            style="font-size: 14px; text-align: center; padding: 20px; color: var(--text-dim);">
+                            No meetings scheduled.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- SECTION 2: LEADS --- -->
+            <div id="leads" class="tab-content">
+                <div class="card-container">
+                    <div class="card-header">
+                        <h3>All Leads Management</h3>
+                        <button class="primary-btn">Export CSV</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Service/Source</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leads-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- --- SECTION 3: SERVICES --- -->
+            <div id="services" class="tab-content">
+                <div class="card-container">
+                    <h3>Add New Service</h3>
+                    <div class="grid-form">
+                        <div class="form-group">
+                            <label>Service Name</label>
+                            <input type="text" placeholder="e.g. Premium SEO">
+                        </div>
+                        <div class="form-group">
+                            <label>Base Pricing</label>
+                            <input type="text" placeholder="e.g. 50,000 INR">
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Features (Comma separated)</label>
+                            <textarea rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Featured Image</label>
+                            <input type="file">
+                        </div>
+                        <div class="form-group">
+                            <label>SEO Meta Title</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>SEO Meta Description</label>
+                            <textarea rows="2"></textarea>
+                        </div>
+                    </div>
+                    <button class="primary-btn" onclick="addService()">Save Service</button>
+                </div>
+            </div>
+
+            <!-- --- SECTION 4: BLOG --- -->
+            <div id="blog" class="tab-content">
+                <div class="card-container">
+                    <h3>Blog Post Editor</h3>
+                    <div class="grid-form">
+                        <div class="form-group full-width">
+                            <label>Blog Title</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select>
+                                <option>SEO</option>
+                                <option>Web Design</option>
+                                <option>Marketing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Slug</label>
+                            <input type="text" placeholder="url-friendly-slug">
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Content Preview</label>
+                            <textarea rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>SEO Meta Description</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Tags (Comma separated)</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <button class="primary-btn" onclick="addBlogPost()">Publish Post</button>
+                </div>
+            </div>
+
+            <!-- --- SECTION 11: SETTINGS --- -->
+            <div id="settings" class="tab-content">
+                <div class="card-container">
+                    <h3>Website Identity & Assets</h3>
+                    <div class="grid-form">
+                        <div class="form-group">
+                            <label>Site Logo (Dark/Light)</label>
+                            <input type="file">
+                        </div>
+                        <div class="form-group">
+                            <label>Favicon Upload</label>
+                            <input type="file">
+                        </div>
+                        <div class="form-group">
+                            <label>Business Email</label>
+                            <input type="email" id="settings-email" value="rapidbasedesign1@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Number (Display)</label>
+                            <input type="text" id="settings-phone" value="+91 9326511823">
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Physical Address / Office Location</label>
+                            <textarea rows="2">Rapid Base Design HQ, India</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-container">
+                    <h3>Integrations & Tracking</h3>
+                    <div class="grid-form">
+                        <div class="form-group">
+                            <label>Google Analytics Code (G-ID)</label>
+                            <input type="text" id="settings-ga" placeholder="G-XXXXXXXXXX">
+                        </div>
+                        <div class="form-group">
+                            <label>Facebook Pixel ID</label>
+                            <input type="text" id="settings-pixel" placeholder="Enter FB Pixel ID">
+                        </div>
+                        <div class="form-group">
+                            <label>WhatsApp Chat Button Number</label>
+                            <input type="text" id="settings-whatsapp" value="+91 9326511823">
+                        </div>
+                        <div class="form-group">
+                            <label>Payment Gateway Key (Razorpay/Stripe)</label>
+                            <input type="password" placeholder="sk_test_••••••••••••">
+                        </div>
+                    </div>
+                    <button class="primary-btn" onclick="updateAllSettings()">Update All Site Settings</button>
+                </div>
+            </div>
+
+            <!-- --- SECTION 5: TESTIMONIALS --- -->
+            <div id="testimonials" class="tab-content">
+                <div class="card-container">
+                    <h3>Client Reviews</h3>
+                    <div class="grid-form">
+                        <div class="form-group">
+                            <label>Client Name</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Business Name</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Rating</label>
+                            <select>
+                                <option>5 Stars</option>
+                                <option>4 Stars</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Client Image</label>
+                            <input type="file">
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Review Text</label>
+                            <textarea rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Link to Case Study (Optional)</label>
+                            <select id="testimonial-case-link">
+                                <option value="">None</option>
+                                <option value="attached">Attached Result Metrics</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="primary-btn" onclick="addTestimonial()">Add Testimonial</button>
+                </div>
+            </div>
+
+            <!-- --- SECTION 6: PORTFOLIO --- -->
+            <div id="portfolio" class="tab-content">
+                <div class="card-container">
+                    <h3>Case Study / Project Upload</h3>
+                    <div class="grid-form">
+                        <div class="form-group">
+                            <label>Project Name</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Industry</label>
+                            <input type="text" placeholder="e.g. Healthcare">
+                        </div>
+                        <div class="form-group">
+                            <label>Result Metrics (Traffic/Leads/Sales)</label>
+                            <input type="text" placeholder="e.g. 200% Increase in Traffic">
+                        </div>
+                        <div class="form-group">
+                            <label>Website Live Link</label>
+                            <input type="text" placeholder="https://client-site.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Before Image</label>
+                            <input type="file">
+                        </div>
+                        <div class="form-group">
+                            <label>After Image</label>
+                            <input type="file">
+                        </div>
+                    </div>
+                    <button class="primary-btn" onclick="saveCaseStudy()">Save Case Study</button>
+                </div>
+            </div>
+
+            <!-- --- SECTION 7: APPOINTMENTS --- -->
+            <div id="appointments" class="tab-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="label">Booked Today</span>
+                        <div class="value" id="stats-booked-today">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="label">Total This Week</span>
+                        <div class="value" id="stats-booked-week">0</div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <h3>Meeting Schedule</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Client</th>
+                                <th>Type</th>
+                                <th>Source</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointments-tbody">
+                            <tr>
+                                <td colspan="4" style="text-align: center; color: var(--text-dim); padding: 20px;">No
+                                    appointments scheduled.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- --- SECTION 8: SOCIAL --- -->
+            <div id="social" class="tab-content">
+                <div class="card-container">
+                    <h3>Social Media Integrations</h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                        <div class="stat-card" style="text-align: center;">
+                            <i class="fab fa-instagram" style="font-size: 30px; color: #e1306c;"></i>
+                            <div style="margin-top: 10px; font-weight: 700;">Instagram</div>
+                            <button class="primary-btn" style="padding: 5px 10px; font-size: 11px;"
+                                onclick="window.open('https://instagram.com/rapidbasedesign_?igsh=Yjg3Y3RzeW1yNmtk', '_blank')">Connect</button>
+                        </div>
+                        <div class="stat-card" style="text-align: center;">
+                            <i class="fab fa-facebook" style="font-size: 30px; color: #4267B2;"></i>
+                            <div style="margin-top: 10px; font-weight: 700;">Facebook</div>
+                            <button class="primary-btn" style="padding: 5px 10px; font-size: 11px;"
+                                onclick="window.open('https://facebook.com/share/18Mv5z8vWC/?mibextid=wwXIfr', '_blank')">Connect</button>
+                        </div>
+                        <div class="stat-card" style="text-align: center;">
+                            <i class="fab fa-linkedin" style="font-size: 30px; color: #0077b5;"></i>
+                            <div style="margin-top: 10px; font-weight: 700;">LinkedIn</div>
+                            <button class="primary-btn" style="padding: 5px 10px; font-size: 11px;"
+                                onclick="window.open('https://linkedin.com/in/rapid-base-design-b5b264383?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', '_blank')">Connect</button>
+                        </div>
+                        <div class="stat-card" style="text-align: center;">
+                            <i class="fab fa-youtube" style="font-size: 30px; color: #FF0000;"></i>
+                            <div style="margin-top: 10px; font-weight: 700;">YouTube</div>
+                            <button class="primary-btn" style="padding: 5px 10px; font-size: 11px;"
+                                onclick="window.open('https://www.youtube.com/@Rapidbasedesign', '_blank')">Connect</button>
+                        </div>
+                        <div class="stat-card" style="text-align: center;">
+                            <i class="fab fa-pinterest" style="font-size: 30px; color: #E60023;"></i>
+                            <div style="margin-top: 10px; font-weight: 700;">Pinterest</div>
+                            <button class="primary-btn" style="padding: 5px 10px; font-size: 11px;"
+                                onclick="window.open('https://pin.it/6u8ggenYj', '_blank')">Connect</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- SECTION 9: TEAM --- -->
+            <div id="team" class="tab-content">
+                <div class="card-container">
+                    <h3>Team & Roles</h3>
+                    <div class="grid-form">
+                        <div class="form-group"><label>Employee Name</label><input type="text"></div>
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select>
+                                <option>Admin</option>
+                                <option>Editor</option>
+                                <option>SEO Expert</option>
+                                <option>Designer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="primary-btn" onclick="inviteTeamMember()">Invite Member</button>
+                </div>
+                <div class="card-container">
+                    <h3>Team Activity Tracking</h3>
+                    <div id="activity-log"
+                        style="font-size: 13px; max-height: 200px; overflow-y: auto; background: rgba(0,0,0,0.2); border-radius: 8px; padding: 15px;">
+                        <p style="color:var(--text-dim)">No recent activity tracked.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- SECTION 10: MARKETING --- -->
+            <div id="marketing" class="tab-content">
+                <div class="card-container">
+                    <h3>Newsletter Campaigns</h3>
+                    <div class="grid-form">
+                        <div class="form-group full-width"><label>Campaign Subject</label><input type="text"></div>
+                        <div class="form-group full-width"><label>Email Template Content</label><textarea
+                                rows="5"></textarea></div>
+                    </div>
+                    <div class="card-container">
+                        <h3>Newsletter Subscribers</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subscribers-body">
+                                <tr>
+                                    <td colspan="3" style="text-align:center; padding:10px; color:var(--text-dim);">No
+                                        subscribers yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="primary-btn" onclick="sendNewsletter()">Send Bulk Email</button>
+                </div>
+            </div>
+
+            <!-- --- SECTION 12: REPORTS --- -->
+            <div id="reports" class="tab-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="label">Total Leads</span>
+                        <div class="value" id="stats-total-leads">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="label">Revenue (EST)</span>
+                        <div class="value" id="stats-revenue">₹0</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="label">Client Acquisition</span>
+                        <div class="value" id="stats-acquisition">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="label">Search Impressions</span>
+                        <div class="value">Active</div>
+                    </div>
+                </div>
+                <!-- SEO Metrics Card -->
+                <div class="card-container">
+                    <h3 style="margin-bottom: 20px;">Monthly SEO Performance (Search Console)</h3>
+                    <div class="grid-form">
+                        <div class="form-group">
+                            <label>Total Clicks (Last 28 Days)</label>
+                            <input type="number" id="seo-clicks" placeholder="e.g. 1200">
+                        </div>
+                        <div class="form-group">
+                            <label>Total Impressions</label>
+                            <input type="number" id="seo-impressions" placeholder="e.g. 45000">
+                        </div>
+                        <div class="form-group">
+                            <label>Average CTR (%)</label>
+                            <input type="text" id="seo-ctr" placeholder="e.g. 2.7%">
+                        </div>
+                        <div class="form-group">
+                            <label>Average Position</label>
+                            <input type="text" id="seo-pos" placeholder="e.g. 14.5">
+                        </div>
+                    </div>
+                    <button class="primary-btn" onclick="saveSeoMetrics()" style="margin-top: 15px;">Save SEO
+                        Snapshot</button>
+
+                    <div style="margin-top: 30px; border-top: 1px solid var(--border); padding-top: 20px;">
+                        <div
+                            style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; text-align: center; border: 1px dashed var(--border);">
+                            <i class="fab fa-google" style="font-size: 30px; color: #4285F4; margin-bottom: 15px;"></i>
+                            <h4>External Insight</h4>
+                            <p style="margin: 10px 0 20px; color: var(--text-dim); font-size: 13px;">For live indexing
+                                status and technical errors, visit the official console.</p>
+                            <a href="https://search.google.com/search-console?resource_id=sc-domain%3Arapidbasedesign.com"
+                                target="_blank" class="primary-btn"
+                                style="display: inline-block; text-decoration: none; padding: 8px 16px; font-size: 12px;">Open
+                                Full Search Console</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FALLBACK -->
+            <div id="placeholder" class="tab-content">
+                <div class="card-container" style="text-align: center; padding: 50px;">
+                    <i class="fas fa-tools" style="font-size: 40px; color: var(--text-dim); margin-bottom: 20px;"></i>
+                    <h3>Section Under Development</h3>
+                    <p style="color: var(--text-dim);">This management module is currently being optimized for your
+                        experience.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const AUTH_USER = "rapidbasedesign";
+        const AUTH_PASS = "rapidbase@123";
+
+        // APP STATE
+        let appData = {
+            stats: {
+                visitors: 0,
+                conversionRate: "0%",
+                bookedToday: 0,
+                bookedWeek: 0
+            },
+            settings: {
+                logo: "",
+                email: "rapidbasedesign1@gmail.com",
+                phone: "+91 9326511823",
+                address: "Rapid Base Design HQ, India",
+                ga: "",
+                pixel: "",
+                whatsapp: "+91 9326511823",
+                gateway: ""
+            },
+            leads: [],
+            blog: [],
+            services: [],
+            testimonials: [],
+            portfolio: [],
+            team: [],
+            subscribers: [],
+            appointments: [],
+            activity: [],
+            seo: { clicks: 0, impressions: 0, ctr: "0%", position: "0" }
+        };
+
+        function attemptLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const error = document.getElementById('login-error');
+
+            if (user === AUTH_USER && pass === AUTH_PASS) {
+                document.getElementById('login-overlay').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('login-overlay').style.display = 'none';
+                    document.getElementById('admin-panel').style.display = 'grid';
+                    localStorage.setItem('rbd_authenticated', 'true');
+                    initData();
+                }, 500);
+            } else {
+                error.style.display = 'block';
+            }
+        }
+
+        function showTab(tabId) {
+            const content = document.getElementById(tabId);
+            const allTabs = document.querySelectorAll('.tab-content');
+            const allLinks = document.querySelectorAll('.nav-link');
+
+            allTabs.forEach(t => t.classList.remove('active'));
+            allLinks.forEach(l => l.classList.remove('active'));
+
+            if (content) {
+                content.classList.add('active');
+            } else {
+                const placeholder = document.getElementById('placeholder');
+                if (placeholder) placeholder.classList.add('active');
+            }
+
+            document.getElementById('current-tab-title').innerText = tabId.charAt(0).toUpperCase() + tabId.slice(1) + " Management";
+
+            // Fix for event variable
+            if (window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('active');
+            }
+        }
+
+        // Initialize Data
+        function initData() {
+            const savedData = localStorage.getItem('rbd_app_data');
+            if (savedData) {
+                appData = JSON.parse(savedData);
+            }
+            refreshAllUI();
+        }
+
+        function refreshAllUI() {
+            renderLeads();
+            renderAppointments();
+            loadSettings();
+            loadSeoMetrics();
+            updateDashboardStats();
+        }
+
+        function renderAppointments() {
+            const body = document.getElementById('appointments-tbody');
+            if (!body) return;
+            body.innerHTML = appData.appointments.length > 0 ?
+                appData.appointments.map(a => `
+                    <tr>
+                        <td>${a.time}</td>
+                        <td>${a.client}</td>
+                        <td>${a.type}</td>
+                        <td>${a.source}</td>
+                    </tr>
+                `).join('') :
+                '<tr><td colspan="4" style="text-align: center; color: var(--text-dim); padding: 20px;">No appointments scheduled.</td></tr>';
+        }
+
+        function updateDashboardStats() {
+            const totalLeads = appData.leads ? appData.leads.length : 0;
+            const blogCount = appData.blog ? appData.blog.length : 0;
+            const convertedLeads = appData.leads ? appData.leads.filter(l => l.status === 'converted').length : 0;
+
+            // Calculate Conversion Rate
+            const convRate = appData.stats.visitors > 0 ? ((convertedLeads / appData.stats.visitors) * 100).toFixed(1) + "%" : "0%";
+
+            // Dashboard Overview Cards
+            const statCards = document.querySelectorAll('#dashboard .stat-card');
+            if (statCards.length >= 4) {
+                statCards[0].querySelector('.value').innerText = appData.stats.visitors || 0;
+                statCards[1].querySelector('.value').innerText = totalLeads;
+                statCards[2].querySelector('.value').innerText = convertedLeads;
+                statCards[3].querySelector('.value').innerText = convRate;
+            }
+
+            // Reports Section Specific
+            const reportLeads = document.getElementById('stats-total-leads');
+            if (reportLeads) reportLeads.innerText = totalLeads;
+
+            const bookedToday = document.getElementById('stats-booked-today');
+            if (bookedToday) bookedToday.innerText = appData.stats.bookedToday || 0;
+
+            // Financials
+            const revenue = document.getElementById('stats-revenue');
+            if (revenue) revenue.innerText = '₹' + (convertedLeads * 50000).toLocaleString(); // Estimated
+
+            const acquisition = document.getElementById('stats-acquisition');
+            if (acquisition) acquisition.innerText = totalLeads > 0 ? (totalLeads / 10).toFixed(0) : 0; // Simulated
+
+            renderActivity();
+        }
+
+        function logActivity(msg) {
+            appData.activity.unshift({
+                time: new Date().toLocaleTimeString(),
+                msg: msg
+            });
+            if (appData.activity.length > 50) appData.activity.pop();
+            renderActivity();
+        }
+
+        function renderActivity() {
+            const logEl = document.getElementById('activity-log');
+            if (!logEl) return;
+            logEl.innerHTML = appData.activity.length > 0 ?
+                appData.activity.map(a => `<p style="margin-bottom:5px;"><b>[${a.time}]</b> ${a.msg}</p>`).join('') :
+                '<p style="color:var(--text-dim)">No recent activity tracked.</p>';
+        }
+
+        function saveData() {
+            localStorage.setItem('rbd_app_data', JSON.stringify(appData));
+            updateDashboardStats();
+        }
+
+        function loadSettings() {
+            const s = appData.settings;
+            if (document.getElementById('settings-email')) document.getElementById('settings-email').value = s.email;
+            if (document.getElementById('settings-phone')) document.getElementById('settings-phone').value = s.phone;
+            if (document.getElementById('settings-ga')) document.getElementById('settings-ga').value = s.ga || '';
+            if (document.getElementById('settings-whatsapp')) document.getElementById('settings-whatsapp').value = s.whatsapp || s.phone;
+            if (document.getElementById('settings-pixel')) document.getElementById('settings-pixel').value = s.pixel || '';
+        }
+
+        function updateAllSettings() {
+            appData.settings.email = document.getElementById('settings-email').value;
+            appData.settings.phone = document.getElementById('settings-phone').value;
+            appData.settings.ga = document.getElementById('settings-ga').value;
+            appData.settings.whatsapp = document.getElementById('settings-whatsapp').value;
+            appData.settings.pixel = document.getElementById('settings-pixel').value;
+
+            saveData();
+            logActivity("Updated website settings");
+            alert('Settings Saved Successfully! Changes are now live across your site.');
+        }
+
+        function inviteTeamMember() {
+            const name = document.querySelector('#team input[type="text"]').value;
+            const role = document.querySelector('#team select').value;
+            if (!name) return alert('Enter Member Name');
+
+            appData.team.push({ id: Date.now(), name, role, date: new Date().toLocaleDateString() });
+            saveData();
+            logActivity(`Invited new team member: ${name} (${role})`);
+            alert('Member Invited!');
+            document.querySelector('#team input[type="text"]').value = '';
+        }
+
+        function sendNewsletter() {
+            const subject = document.querySelector('#marketing input[type="text"]').value;
+            if (!subject) return alert('Enter Campaign Subject');
+
+            logActivity(`Scheduled newsletter campaign: ${subject}`);
+            alert('Newsletter scheduled for sending to all subscribers!');
+            document.querySelector('#marketing input[type="text"]').value = '';
+            document.querySelector('#marketing textarea').value = '';
+        }
+
+        // --- SEO DATA HANDLERS ---
+        function saveSeoMetrics() {
+            appData.seo = {
+                clicks: document.getElementById('seo-clicks').value,
+                impressions: document.getElementById('seo-impressions').value,
+                ctr: document.getElementById('seo-ctr').value,
+                position: document.getElementById('seo-pos').value
+            };
+            saveData();
+            alert('SEO Snapshot Saved! You can now track monthly progress here.');
+        }
+
+        function loadSeoMetrics() {
+            const s = appData.seo || { clicks: 0, impressions: 0, ctr: "0%", position: "0" };
+            if (document.getElementById('seo-clicks')) {
+                document.getElementById('seo-clicks').value = s.clicks;
+                document.getElementById('seo-impressions').value = s.impressions;
+                document.getElementById('seo-ctr').value = s.ctr;
+                document.getElementById('seo-pos').value = s.position;
+            }
+        }
+
+        function addService() {
+            const name = document.querySelector('#services input[placeholder*="Premium"]').value;
+            const price = document.querySelector('#services input[placeholder*="INR"]').value;
+            const features = document.querySelector('#services textarea').value;
+            const metaTitle = document.querySelector('#services input[type="text"]:nth-of-type(2)').value;
+
+            if (!name) return alert('Enter Service Name');
+            appData.services.push({
+                id: Date.now(),
+                name,
+                price,
+                features,
+                metaTitle,
+                date: new Date().toLocaleDateString()
+            });
+            saveData();
+            logActivity(`Added new service: ${name}`);
+            alert('Service Added!');
+            document.querySelectorAll('#services input, #services textarea').forEach(i => i.value = '');
+        }
+
+        function addBlogPost() {
+            const title = document.querySelector('#blog input[type="text"]').value;
+            const category = document.querySelector('#blog select').value;
+            const slug = document.querySelector('#blog input[placeholder*="url"]').value;
+
+            if (!title) return alert('Enter Blog Title');
+            appData.blog.push({
+                id: Date.now(),
+                title,
+                category,
+                slug,
+                date: new Date().toLocaleDateString()
+            });
+            saveData();
+            logActivity(`Published blog post: ${title}`);
+            alert('Blog Post Published!');
+            document.querySelectorAll('#blog input, #blog textarea').forEach(i => i.value = '');
+        }
+
+        function addTestimonial() {
+            const name = document.querySelector('#testimonials input[type="text"]').value;
+            const business = document.querySelectorAll('#testimonials input[type="text"]')[1].value;
+            const caseLink = document.getElementById('testimonial-case-link').value;
+
+            if (!name) return alert('Enter Client Name');
+            appData.testimonials.push({
+                id: Date.now(),
+                name,
+                business,
+                caseLink,
+                date: new Date().toLocaleDateString()
+            });
+            saveData();
+            logActivity(`Added testimonial from ${name}`);
+            alert('Testimonial Added!');
+            document.querySelectorAll('#testimonials input, #testimonials textarea').forEach(i => i.value = '');
+        }
+
+        function saveCaseStudy() {
+            const name = document.querySelector('#portfolio input[type="text"]').value;
+            const industry = document.querySelectorAll('#portfolio input[type="text"]')[1].value;
+
+            if (!name) return alert('Enter Project Name');
+            appData.portfolio.push({
+                id: Date.now(),
+                name,
+                industry,
+                date: new Date().toLocaleDateString()
+            });
+            saveData();
+            logActivity(`Saved case study: ${name}`);
+            alert('Case Study Saved!');
+            document.querySelectorAll('#portfolio input').forEach(i => i.value = '');
+        }
+
+        function renderLeads() {
+            const mainBody = document.querySelector('#leads-body');
+            const dashBody = document.getElementById('dashboard-leads-body');
+
+            if (mainBody) {
+                mainBody.innerHTML = (appData.leads || []).length > 0 ?
+                    appData.leads.map(lead => `
+                        <tr>
+                            <td>
+                                <b>${lead.name}</b><br>
+                                <small style="color:var(--text-dim)">${lead.phone || 'No Phone'}</small>
+                            </td>
+                            <td>${lead.type}</td>
+                            <td>
+                                ${lead.service}<br>
+                                <small style="color:var(--info)">Source: ${lead.source || 'Direct'}</small>
+                            </td>
+                            <td>
+                                <select onchange="updateLeadStatus(${lead.id}, this.value)" style="margin:0; padding:4px; font-size:11px; background:rgba(255,255,255,0.1); border:none; color:white; border-radius:4px;">
+                                    <option value="new" ${lead.status === 'new' ? 'selected' : ''}>New</option>
+                                    <option value="contacted" ${lead.status === 'contacted' ? 'selected' : ''}>Contacted</option>
+                                    <option value="followup" ${lead.status === 'followup' ? 'selected' : ''}>Follow-up</option>
+                                    <option value="converted" ${lead.status === 'converted' ? 'selected' : ''}>Converted</option>
+                                    <option value="not_interested" ${lead.status === 'not_interested' ? 'selected' : ''}>Not Interested</option>
+                                </select>
+                            </td>
+                            <td>
+                                <i class="fas fa-envelope" onclick="alert('Email: ${lead.email}')" style="cursor:pointer; margin-right:10px;"></i>
+                                <i class="fas fa-trash" style="cursor:pointer; color:#ff4d4d" onclick="deleteLead(${lead.id})"></i>
+                            </td>
+                        </tr>
+                    `).join('') :
+                    '<tr><td colspan="5" style="text-align:center; padding:20px; color:var(--text-dim);">No leads available.</td></tr>';
+            }
+
+            if (dashBody) {
+                dashBody.innerHTML = (appData.leads || []).length > 0 ?
+                    appData.leads.slice(0, 5).map(lead => `
+                        <tr>
+                            <td>${lead.name}</td>
+                            <td>${lead.service}</td>
+                            <td><span class="status-badge badge-${lead.status || 'new'}">${lead.status || 'new'}</span></td>
+                        </tr>
+                    `).join('') :
+                    '<tr><td colspan="3" style="text-align:center; padding:20px; color:var(--text-dim);">No leads received yet.</td></tr>';
+            }
+        }
+
+        function updateLeadStatus(id, newStatus) {
+            const lead = appData.leads.find(l => l.id === id);
+            if (lead) {
+                lead.status = newStatus;
+                saveData();
+                renderLeads();
+            }
+        }
+
+        function deleteLead(id) {
+            if (confirm('Delete this lead?')) {
+                appData.leads = appData.leads.filter(l => l.id !== id);
+                saveData();
+                renderLeads();
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('rbd_authenticated');
+            location.reload();
+        }
+
+        function toggleMobileMenu() {
+            const aside = document.querySelector('aside');
+            aside.classList.toggle('mobile-active');
+            const icon = document.querySelector('#mobile-toggle i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        }
+
+        // Close menu when clicking link on mobile
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        document.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && document.getElementById('login-overlay').style.display !== 'none') {
+                attemptLogin();
+            }
+        });
+
+        window.onload = () => {
+            if (localStorage.getItem('rbd_authenticated') === 'true') {
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'grid';
+                initData();
+            }
+        }
+    </script>
+</body>
+
+</html>

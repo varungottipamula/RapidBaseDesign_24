@@ -1,5 +1,5 @@
 :root {
-  /* DeepDigital Theme */
+  /* Rapid Base Design Theme */
   --bg-white: #ffffff;
   --bg-dark: #070707;
   --bg-grey: #f9f9f9;
@@ -908,6 +908,16 @@ body {
   gap: 10px;
 }
 
+.contact-list a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.contact-list a:hover {
+  color: var(--accent);
+}
+
 .contact-list i {
   color: var(--accent);
 }
@@ -939,6 +949,17 @@ body {
 
 .newsletter-form button:hover {
   background: #d40046;
+}
+
+.footer-disclaimer {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 15px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  padding: 0 20px;
 }
 
 .footer-bottom {
@@ -1631,6 +1652,25 @@ textarea.form-control {
   .social-links {
     justify-content: center;
   }
+
+  /* FAQ Mobile */
+  .faq-header {
+    padding: 18px 20px;
+  }
+
+  .faq-header h4,
+  .faq-header span {
+    font-size: 15px;
+  }
+
+  .faq-content {
+    padding: 0 20px;
+    font-size: 14px;
+  }
+
+  .faq-item.active .faq-content {
+    padding-bottom: 20px;
+  }
 }
 
 /* ================= FLOATING BUTTONS ================= */
@@ -1654,17 +1694,19 @@ textarea.form-control {
   text-decoration: none;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s, box-shadow 0.3s;
+  color: #fff !important;
 }
 
 .float-btn:hover {
   transform: scale(1.12);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  color: #fff !important;
 }
 
 .float-btn svg {
   width: 28px;
   height: 28px;
-  fill: #fff;
+  fill: currentColor !important;
 }
 
 .float-whatsapp {
@@ -1697,5 +1739,72 @@ textarea.form-control {
 }
 
 .header-contact a:hover {
+  color: var(--accent);
+}
+
+/* ================= FAQ & ACCORDIONS ================= */
+.faq-accordion {
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.faq-item {
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.faq-item:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent);
+}
+
+.faq-header {
+  padding: 24px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-header h4,
+.faq-header span {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+}
+
+.faq-header i {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+  color: #888;
+}
+
+.faq-content {
+  padding: 0 30px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.faq-item.active {
+  border-color: var(--accent);
+}
+
+.faq-item.active .faq-content {
+  padding-bottom: 24px;
+  max-height: 200px;
+}
+
+.faq-item.active .faq-header i {
+  transform: rotate(180deg);
   color: var(--accent);
 }

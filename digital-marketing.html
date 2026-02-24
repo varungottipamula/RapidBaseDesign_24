@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Services | Rapid Base Design</title>
+    <meta name="description"
+        content="Scale your business with data-driven digital marketing. Drive targeted traffic, generate high-quality leads, and accelerate growth with our performance marketing strategies.">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #ff0055, #ff4081);
+            --dark-bg: #0b0b0b;
+            --accent: #ff0055;
+        }
+
+        .service-hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(32px, 5vw, 64px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .service-intro {
+            padding: 80px 0;
+            background: #fff;
+            text-align: center;
+        }
+
+        .why-matters {
+            padding: 100px 0;
+            background: #fdfdfd;
+        }
+
+        .matters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .matters-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #f0f0f0;
+        }
+
+        .matters-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .matters-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .matters-card-content {
+            padding: 30px;
+        }
+
+        .matters-card-content h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            color: #111;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            color: #111;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .section-lead {
+            color: #555;
+            font-size: 17px;
+            max-width: 800px;
+            margin: 0 auto 35px;
+            line-height: 1.6;
+        }
+
+        /* Two Column Section */
+        .two-column-section {
+            padding: 120px 0;
+            background: #fff;
+        }
+
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: flex-start;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .column-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .icon-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .icon-list i {
+            color: var(--accent);
+            background: rgba(255, 0, 85, 0.1);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+        /* Image Accordion */
+        .image-accordion {
+            padding: 100px 0;
+            background: var(--dark-bg);
+            color: #fff;
+        }
+
+        .accordion-wrapper {
+            display: flex;
+            height: 500px;
+            gap: 15px;
+            margin-top: 50px;
+        }
+
+        .accordion-item {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            transition: all 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+            cursor: pointer;
+        }
+
+        .accordion-item.active {
+            flex: 5;
+        }
+
+        .accordion-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        .accordion-item.active img {
+            filter: brightness(0.7);
+        }
+
+        .accordion-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s 0.2s;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .accordion-overlay::-webkit-scrollbar {
+            display: none;
+        }
+
+        .accordion-item.active .accordion-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .accordion-title-vertical {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-90deg);
+            white-space: nowrap;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 18px;
+            transition: opacity 0.3s;
+        }
+
+        .accordion-item.active .accordion-title-vertical {
+            opacity: 0;
+        }
+
+        .accordion-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .accordion-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .accordion-list i {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .process-hierarchy {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-num {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin: 0 auto 20px;
+            font-size: 20px;
+            box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
+        }
+
+        /* Footer CTA */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--primary-gradient);
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .two-column-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+
+            .icon-list li {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .accordion-wrapper {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .accordion-item {
+                height: 80px;
+                min-height: 80px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .accordion-item.active {
+                height: auto;
+                min-height: auto;
+            }
+
+            .accordion-item img {
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+            }
+
+            .accordion-overlay {
+                position: relative;
+                padding: 40px 20px;
+                opacity: 1;
+                transform: none;
+                z-index: 2;
+                background: rgba(0, 0, 0, 0.8);
+                display: none;
+                flex-direction: column;
+                justify-content: flex-start;
+                text-align: left;
+            }
+
+            .accordion-item.active .accordion-overlay {
+                display: flex;
+            }
+
+            .accordion-title-vertical {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                padding: 28px 20px;
+                width: 100%;
+                text-align: center;
+                display: block;
+                z-index: 3;
+            }
+
+            .accordion-item.active .accordion-title-vertical {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.jpeg" alt="Rapid Base Design Logo" class="logo-img" width="40" height="40">
+                <span class="logo-text"><span class="highlight">RAPID</span> BASE <span
+                        class="subtle">DESIGN</span></span>
+            </a>
+            <button id="nav-toggle" aria-label="Toggle Mobile Menu"><i class="fas fa-bars"></i></button>
+            <nav id="site-nav" class="nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </nav>
+            <div class="header-contact">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+919326511823">+91 9326511823</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="service-hero">
+        <div class="container">
+            <span class="section-label" style="color:#fff">DIGITAL MARKETING SERVICES</span>
+            <h1>DRIVE TARGETED TRAFFIC, GENERATE <br>LEADS & ACCELERATE GROWTH</h1>
+            <p style="max-width: 750px; margin: 0 auto; opacity: 0.9; font-size: 18px;">
+                We build data-driven digital marketing strategies that attract the right audience, convert them into
+                customers, and scale your business profitably.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="why-matters">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">WHY DIGITAL MARKETING MATTERS</h2>
+            <p class="section-lead" style="text-align: center;">In today’s competitive digital world, a structured
+                marketing system is your key to predictable growth.</p>
+            <div class="matters-grid">
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&w=800&q=80"
+                        alt="Customer Acquisition">
+                    <div class="matters-card-content">
+                        <h3>Your primary customer acquisition engine</h3>
+                        <p>Attract high-intent users actively searching for your solutions.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80"
+                        alt="Brand Visibility">
+                    <div class="matters-card-content">
+                        <h3>Your brand visibility amplifier</h3>
+                        <p>Increase your reach and stay top-of-mind across multiple digital platforms.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+                        alt="Lead Generation">
+                    <div class="matters-card-content">
+                        <h3>Your lead generation system</h3>
+                        <p>Turn web traffic into a consistent stream of qualified business inquiries.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80"
+                        alt="Revenue Growth">
+                    <div class="matters-card-content">
+                        <h3>Your revenue growth driver</h3>
+                        <p>Directly link marketing efforts to sales performance and business ROI.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+                        alt="Positioning">
+                    <div class="matters-card-content">
+                        <h3>Your competitive positioning tool</h3>
+                        <p>Stand out in crowded markets with targeted messaging and authority.</p>
+                    </div>
+                </div>
+                <div class="matters-card">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+                        alt="Scalability">
+                    <div class="matters-card-content">
+                        <h3>Your long-term scalability strategy</h3>
+                        <p>Build assets and systems that compound value as your business grows.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="font-weight: 700; color: #333;">Without strategy, marketing wastes the budget. With the right
+                    system, marketing becomes predictable growth.</p>
+                <h3 style="color: var(--accent); font-weight: 900; margin-top: 10px;">WE BUILD MARKETING SYSTEMS THAT
+                    PERFORM.</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="two-column-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 80px;">CORE MARKETING SERVICES</h2>
+
+            <div class="two-column-grid">
+                <div class="column-text">
+                    <span class="section-label">01. STRATEGY</span>
+                    <h3>DIGITAL STRATEGY & PLANNING</h3>
+                    <p>Every successful campaign starts with a clear roadmap. We focus on sustainable, scalable growth,
+                        not random tactics.</p>
+                    <ul class="icon-list">
+                        <li><i class="fas fa-check"></i> Market & competitor analysis</li>
+                        <li><i class="fas fa-check"></i> Target audience research</li>
+                        <li><i class="fas fa-check"></i> Customer journey mapping</li>
+                        <li><i class="fas fa-check"></i> Channel selection strategy</li>
+                        <li><i class="fas fa-check"></i> Funnel development</li>
+                        <li><i class="fas fa-check"></i> KPI & performance goal setting</li>
+                    </ul>
+                </div>
+                <div class="column-text">
+                    <span class="section-label">02. EXECUTION</span>
+                    <h3>MULTI-CHANNEL MARKETING EXECUTION</h3>
+                    <p>We implement integrated campaigns across the platforms that matter most, ensuring your brand
+                        stays consistent while reaching customers everywhere.</p>
+                    <ul class="icon-list">
+                        <li><i class="fas fa-check"></i> Search Engine Marketing (SEM)</li>
+                        <li><i class="fas fa-check"></i> Social media marketing</li>
+                        <li><i class="fas fa-check"></i> Paid advertising campaigns</li>
+                        <li><i class="fas fa-check"></i> Content marketing</li>
+                        <li><i class="fas fa-check"></i> Email marketing</li>
+                        <li><i class="fas fa-check"></i> Retargeting strategies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-accordion">
+        <div class="container">
+            <h2 class="section-title" style="color: #fff; text-align: center;">PERFORMANCE MARKETING SOLUTIONS</h2>
+            <div class="accordion-wrapper">
+                <div class="accordion-item active">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+                        alt="Paid Ads">
+                    <span class="accordion-title-vertical">PAID ADVERTISING</span>
+                    <div class="accordion-overlay">
+                        <h3>Paid Advertising</h3>
+                        <p>High-ROI campaigns designed to convert visitors into customers.</p>
+                        <ul class="accordion-list">
+                            <li><i class="fab fa-google"></i> Google Ads campaigns</li>
+                            <li><i class="fab fa-facebook"></i> Social media ads</li>
+                            <li><i class="fas fa-ad"></i> Display advertising</li>
+                            <li><i class="fas fa-redo"></i> Remarketing campaigns</li>
+                            <li><i class="fas fa-flask"></i> A/B testing</li>
+                            <li><i class="fas fa-chart-line"></i> Conversion tracking setup</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-size: 14px; opacity: 0.9;">We focus on maximizing return on ad
+                            spend (ROAS).</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=80"
+                        alt="Social Media">
+                    <span class="accordion-title-vertical">SOCIAL MEDIA MARKETING</span>
+                    <div class="accordion-overlay">
+                        <h3>Social Media Marketing</h3>
+                        <p>Build visibility and engagement across platforms. We turn followers into customers.</p>
+                        <ul class="accordion-list">
+                            <li><i class="fas fa-calendar-check"></i> Content planning & scheduling</li>
+                            <li><i class="fas fa-comments"></i> Community engagement</li>
+                            <li><i class="fas fa-bullhorn"></i> Brand awareness campaigns</li>
+                            <li><i class="fas fa-chart-pie"></i> Performance tracking</li>
+                            <li><i class="fas fa-rocket"></i> Social growth strategy</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <img src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?auto=format&fit=crop&w=1200&q=80"
+                        alt="SEO">
+                    <span class="accordion-title-vertical">SEARCH ENGINE OPTIMIZATION</span>
+                    <div class="accordion-overlay">
+                        <h3>Search Engine Optimization (SEO)</h3>
+                        <p>Organic traffic drives long-term profitability and search authority.</p>
+                        <ul class="accordion-list">
+                            <li><i class="fas fa-search"></i> On-page & Technical SEO</li>
+                            <li><i class="fas fa-key"></i> Keyword research</li>
+                            <li><i class="fas fa-file-alt"></i> Content optimization</li>
+                            <li><i class="fas fa-link"></i> Link-building strategies</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Local SEO</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80"
+                        alt="Content">
+                    <span class="accordion-title-vertical">CONTENT & EMAIL</span>
+                    <div class="accordion-overlay">
+                        <h3>Content & Email Marketing</h3>
+                        <p>Nurture leads, build authority, and automate your sales process.</p>
+                        <ul class="accordion-list">
+                            <li><i class="fas fa-pen-nib"></i> Blog strategies</li>
+                            <li><i class="fas fa-magnet"></i> Lead magnets</li>
+                            <li><i class="fas fa-envelope-open-text"></i> Email automation sequences</li>
+                            <li><i class="fas fa-filter"></i> Sales funnels</li>
+                            <li><i class="fas fa-copy"></i> Conversion-focused copy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="performance-analytics" style="padding: 100px 0; background: #fff8fb;">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">PERFORMANCE & ANALYTICS</h2>
+            <p class="section-lead" style="text-align: center; margin-bottom: 50px;">
+                We integrate advanced tracking and analytics tools so every decision is backed by solid data.
+            </p>
+            <div class="matters-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-database" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Data-driven</h4>
+                </div>
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-hand-holding-usd"
+                        style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>ROI-focused</h4>
+                </div>
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-user-check"
+                        style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Conversion-optimized</h4>
+                </div>
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-users" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Audience-targeted</h4>
+                </div>
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-expand-arrows-alt"
+                        style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Scalable</h4>
+                </div>
+                <div class="matters-card"
+                    style="padding: 30px; text-align: center; border-bottom: 4px solid var(--accent);">
+                    <i class="fas fa-sync" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4>Continuously improving</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">OUR MARKETING PROCESS</h2>
+            <div class="process-hierarchy">
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <h4>Discovery</h4>
+                    <p>Industry, competitors, and revenue goals analysis.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <h4>Strategy</h4>
+                    <p>Customized marketing roadmap aligned with objectives.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <h4>Setup</h4>
+                    <p>Building funnels, ad structures, and tracking systems.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <h4>Execution</h4>
+                    <p>Deploying campaigns with precision monitoring.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">5</div>
+                    <h4>Optimization</h4>
+                    <p>Data analysis, budget and conversion improvements.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">6</div>
+                    <h4>Reporting</h4>
+                    <p>Transparent reporting and strategy adjustments for growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="who-we-work-with" style="padding: 100px 0; background: #fff;">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">WHO WE WORK WITH</h2>
+            <div class="custom-grid" style="margin-top: 40px; justify-content: center;">
+                <div class="custom-item">Startups</div>
+                <div class="custom-item">Growing businesses</div>
+                <div class="custom-item">E-commerce brands</div>
+                <div class="custom-item">Service-based companies</div>
+                <div class="custom-item">Personal brands</div>
+                <div class="custom-item">Corporate organizations</div>
+            </div>
+            <p
+                style="margin-top: 40px; font-size: 18px; color: #555; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Whether you need brand awareness, lead generation, or aggressive revenue growth, we create strategies
+                aligned with your long-term vision.
+            </p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">WHY CHOOSE <span class="highlight">RAPID BASE
+                    DESIGN?</span></h2>
+            <p class="section-lead" style="text-align: center;">We don’t just run ads, we build marketing engines that
+                fuel business growth.</p>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Strategy-first marketing approach</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        We prioritize long-term strategy over short-term tactics to ensure sustainable growth.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Data-driven decision making</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        Every campaign and budget adjustment is backed by analytics and performance data.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Multi-channel expertise</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        Vast experience across Google, Meta, SEO, and Content marketing platforms.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Conversion-focused campaigns</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        We optimize for the metrics that matter: leads, sales, and revenue.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Transparent reporting</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        Clear, honest, and actionable reporting so you always know where your growth stands.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Scalable growth systems</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        We build systems that can expand and handle higher budgets as your revenue grows.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h4>Ongoing optimization</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        Continuous monitoring and improvements to keep you ahead of the competition.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>READY TO SCALE YOUR BUSINESS?</h2>
+            <p style="font-size: 20px; font-weight: 600; margin-bottom: 40px; opacity: 0.9;">
+                Let’s build a marketing system that attracts customers, increases conversions, and drives measurable
+                results.
+            </p>
+            <a href="contact.html" class="btn white"
+                style="background: #fff; color: var(--accent); padding: 18px 40px; border-radius: 50px; font-weight: 900; text-decoration: none; display: inline-block; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">START
+                YOUR PROJECT TODAY</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo"><span class="highlight">RAPID</span> BASE <span class="highlight">DESIGN</span>
+                </h3>
+                <p>We build digital products that help businesses grow and succeed in the modern world.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/18Mv5z8vWC/?mibextid=wwXIfr"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/rapidbasedesign_?igsh=Yjg3Y3RzeW1yNmtk"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://pin.it/6u8ggenYj"><i class="fab fa-pinterest"></i></a>
+                    <a
+                        href="https://www.linkedin.com/in/rapid-base-design-b5b264383?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>EXPLORE</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>CONTACT</h4>
+                <ul class="contact-list">
+                    <li><i class="fas fa-phone"></i> <a href="tel:+919326511823">+91 9326511823</a></li>
+                    <li><i class="fas fa-envelope"></i> <a
+                            href="mailto:rapidbasedesign1@gmail.com">rapidbasedesign1@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>NEWSLETTER</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit">GO</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Rapid Base Design. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons"
+        style="right: 24px; bottom: 24px; position: fixed; display: flex; flex-direction: column; gap: 14px; z-index: 9999;">
+        <a href="https://wa.me/919326511823?text=Hello%2C%20I%20am%20interested%20in%20digital%20marketing%20services."
+            class="float-btn float-whatsapp" target="_blank"
+            style="width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,0.25); color: #fff !important;"><i
+                class="fab fa-whatsapp" style="font-size: 28px;"></i></a>
+        <a href="tel:+919326511823" class="float-btn float-call"
+            style="width: 56px; height: 56px; background: #128c7e; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,0.25); color: #fff !important;"><i
+                class="fas fa-phone-alt" style="font-size: 24px;"></i></a>
+    </div>
+
+    <!-- POPUP FORM -->
+    <div id="popup-overlay"
+        style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(6px); z-index: 9999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease;">
+        <div id="popup-box"
+            style="background: #fff; border-radius: 16px; max-width: 420px; width: 90%; padding: 36px 28px 28px; position: relative; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); transform: translateY(30px) scale(0.95); transition: transform 0.4s ease, opacity 0.4s ease; opacity: 0;">
+            <button id="popup-close"
+                style="position: absolute; top: 12px; right: 14px; background: none; border: none; font-size: 22px; color: #999; cursor: pointer;">✕</button>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h3 style="font-size: 22px; font-weight: 800;">Get a Free Quote!</h3>
+                <p style="font-size: 14px; color: #777;">Tell us about your project.</p>
+            </div>
+            <form id="popup-form" style="display: flex; flex-direction: column; gap: 12px;">
+                <input type="text" id="popup-name" placeholder="Your Name" required
+                    style="padding: 12px; border: 1.5px solid #eee; border-radius: 8px;">
+                <input type="email" id="popup-email" placeholder="Your Email" required
+                    style="padding: 12px; border: 1.5px solid #eee; border-radius: 8px;">
+                <input type="tel" id="popup-phone" placeholder="Phone Number"
+                    style="padding: 12px; border: 1.5px solid #eee; border-radius: 8px;">
+                <select id="popup-service" style="padding: 12px; border: 1.5px solid #eee; border-radius: 8px;">
+                    <option value="Digital Marketing">Digital Marketing</option>
+                    <option value="Web Design">Web Design</option>
+                    <option value="Branding">Branding</option>
+                </select>
+                <textarea id="popup-message" placeholder="Message" rows="3"
+                    style="padding: 12px; border: 1.5px solid #eee; border-radius: 8px;"></textarea>
+                <button type="submit"
+                    style="padding: 14px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">SEND
+                    MESSAGE</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        (function () {
+            const overlay = document.getElementById('popup-overlay');
+            const box = document.getElementById('popup-box');
+            const closeBtn = document.getElementById('popup-close');
+            const consultBtn = null;
+            const dismissBtn = null;
+            const wrap = null;
+
+            function show() {
+                overlay.style.display = 'flex';
+                setTimeout(() => { overlay.style.opacity = '1'; box.style.opacity = '1'; box.style.transform = 'translateY(0) scale(1)'; }, 10);
+            }
+            function hide() {
+                overlay.style.opacity = '0'; box.style.opacity = '0'; box.style.transform = 'translateY(30px) scale(0.95)';
+                setTimeout(() => { overlay.style.display = 'none'; }, 400);
+            }
+            if (consultBtn) consultBtn.addEventListener('click', show);
+            if (closeBtn) closeBtn.addEventListener('click', hide);
+            if (dismissBtn) dismissBtn.addEventListener('click', () => { wrap.style.display = 'none'; });
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) hide(); });
+        })();
+    </script>
+</body>
+
+</html>

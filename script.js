@@ -1,3 +1,142 @@
+// --- RBD GLOBAL SITE ENGINE ---
+window.rbdConfig = {
+  loadSettings: () => {
+    const savedData = localStorage.getItem('rbd_app_data');
+    if (savedData) {
+      const fullData = JSON.parse(savedData);
+      const data = fullData.settings;
+
+      // Apply Phone Number globally
+      if (data.phone) {
+        document.querySelectorAll('a[href^="tel:"]:not(.float-btn), .header-top span, .footer-contact').forEach(el => {
+          if (el.tagName === 'A') el.href = `tel:${data.phone}`;
+          el.innerText = el.innerText.includes('CALL') ? `CALL: ${data.phone}` : data.phone;
+        });
+      }
+      // Apply Email globally
+      if (data.email) {
+        document.querySelectorAll('a[href^="mailto:"], .footer-email').forEach(el => {
+          el.href = `mailto:${data.email}`;
+          if (!el.querySelector('i')) el.innerText = data.email;
+        });
+      }
+      // Apply Google Analytics (G-ID)
+      if (data.ga && !window.ga_script_loaded) {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${data.ga}`;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', data.ga);
+        window.ga_script_loaded = true;
+      }
+
+      // --- DYNAMIC CONTENT RENDERING ---
+
+      // 1. Dynamic Blogs
+      const blogGrid = document.querySelector('.blog-grid');
+      if (blogGrid && fullData.blog && fullData.blog.length > 0) {
+        fullData.blog.forEach(post => {
+          const blogHTML = `
+                <article class="blog-card" style="width: 100%;">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="${post.title}" width="450" height="450">
+                        <div class="blog-category">${post.category || 'Updates'}</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
+                            <span><i class="fas fa-user"></i> Admin</span>
+                        </div>
+                        <h3><a href="#" style="color: inherit; text-decoration: none;">${post.title}</a></h3>
+                        <p>${post.seoDesc || 'New insight from Rapid Base Design... Click to read more.'}</p>
+                        <a href="#" class="read-more">READ MORE <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            `;
+          blogGrid.insertAdjacentHTML('afterbegin', blogHTML);
+        });
+      }
+
+      // 2. Dynamic Services
+      const seviceGrid = document.querySelector('#services .cards');
+      if (seviceGrid && fullData.services && fullData.services.length > 0) {
+        fullData.services.forEach(s => {
+          const sHTML = `
+                <article class="service-card">
+                    <div class="icon-circle"><i class="fas fa-plus-circle"></i></div>
+                    <h3>${s.name}</h3>
+                    <p>${s.features || 'Custom solution tailored to your business needs.'}</p>
+                </article>
+              `;
+          seviceGrid.insertAdjacentHTML('afterbegin', sHTML);
+        });
+      }
+
+      // 3. Dynamic Portfolio
+      const portGrid = document.querySelector('.portfolio-grid');
+      if (portGrid && fullData.portfolio && fullData.portfolio.length > 0) {
+        fullData.portfolio.forEach(p => {
+          const pHTML = `
+                <article class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=600&q=400" alt="${p.name}">
+                    <div class="portfolio-overlay">
+                        <h3>${p.name}</h3>
+                        <p>${p.industry || 'Project'}</p>
+                        <a href="${p.link || '#'}" target="_blank" class="btn primary">VIEW LIVE</a>
+                    </div>
+                </article>
+              `;
+          portGrid.insertAdjacentHTML('afterbegin', pHTML);
+        });
+      }
+
+      // 4. Dynamic Testimonials
+      const testGrid = document.querySelector('.testimonial-cards');
+      if (testGrid && fullData.testimonials && fullData.testimonials.length > 0) {
+        fullData.testimonials.forEach(t => {
+          const tHTML = `
+                <article class="testimonial-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p>"${t.business || 'High quality work!'} ${t.name} was a pleasure to work with and exceeded our expectations."</p>
+                    <div class="author">
+                        — <strong>${t.name.toUpperCase()}</strong>, ${t.business || 'Client'}
+                    </div>
+                </article>
+              `;
+          testGrid.insertAdjacentHTML('afterbegin', tHTML);
+        });
+      }
+    }
+  },
+  captureLead: (formData) => {
+    const savedData = localStorage.getItem('rbd_app_data') || '{"leads":[]}';
+    const data = JSON.parse(savedData);
+    if (!data.leads) data.leads = [];
+    data.leads.unshift({
+      id: Date.now(),
+      name: formData.name,
+      phone: formData.phone || '',
+      email: formData.email || '',
+      location: formData.location || 'Unknown',
+      source: formData.source || 'Website Form',
+      type: formData.type || 'Inquiry',
+      service: formData.service || 'General',
+      notes: formData.notes || '',
+      status: 'new',
+      date: new Date().toLocaleDateString()
+    });
+    localStorage.setItem('rbd_app_data', JSON.stringify(data));
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.rbdConfig.loadSettings();
+});
+
 // Critical UI: Mobile Nav & Typing Effect (Execute Immediately)
 document.addEventListener('DOMContentLoaded', () => {
   /* ---------- MOBILE NAV TOGGLE ---------- */
@@ -522,6 +661,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const subject = document.getElementById('subject').value;
       const message = document.getElementById('message').value;
 
+      // CAPTURE LEAD FOR ADMIN PANEL
+      if (window.rbdConfig) {
+        window.rbdConfig.captureLead({
+          name: name,
+          email: email,
+          type: 'Website Lead',
+          service: subject
+        });
+      }
+
       const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
       const mailtoLink = `mailto:rapidbasedesign1@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 
@@ -555,4 +704,41 @@ window.addEventListener('load', () => {
   if (typeof ScrollTrigger !== 'undefined') {
     ScrollTrigger.refresh();
   }
+});
+
+
+/* ================= GLOBAL ACCORDIONS & FAQ ================= */
+// Image Accordion Switcher
+function initImageAccordions() {
+  const accordions = document.querySelectorAll('.accordion-item');
+  if (accordions.length > 0) {
+    accordions.forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  }
+}
+
+// FAQ / Content Accordion
+function initFaqAccordions() {
+  const faqHeaders = document.querySelectorAll('.faq-header');
+  if (faqHeaders.length > 0) {
+    faqHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        const isAlreadyActive = item.classList.contains('active');
+
+        // Close others in the same section if needed (optional, current site allows multiple open)
+        // For now, mirroring existing behavior: toggle current
+        item.classList.toggle('active');
+      });
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initImageAccordions();
+  initFaqAccordions();
 });
