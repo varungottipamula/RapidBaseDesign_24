@@ -65,7 +65,7 @@
   </header>
 
   <!-- HERO -->
-  <section id="home" class="hero">
+  <section id="home" class="hero angled-bottom">
     <div class="hero-overlay"></div>
     <div class="container hero-inner">
       <p class="hero-sub" style="font-weight: 700; letter-spacing: 2px;">WE BUILD</p>
@@ -84,7 +84,7 @@
   </section>
 
   <!-- WHO WE ARE (About) -->
-  <section id="about" class="section about-section">
+  <section id="about" class="section section-premium-white">
     <div class="container about-inner">
       <!-- Left Image -->
       <div class="about-image">
@@ -96,17 +96,18 @@
       <!-- Right Text -->
       <div class="about-text">
         <span class="section-label">WHO WE ARE</span>
-        <h2>WE ARE A CREATIVE DIGITAL AGENCY</h2>
+        <h2 class="section-title" style="text-align: left;">WE ARE A <span class="highlight">CREATIVE</span> DIGITAL
+          AGENCY</h2>
         <p>
           We help brands to grow. We believe in the power of digital innovation and design.
           Our team consists of passionate designers, developers, and strategists.
         </p>
 
         <ul class="check-list">
-          <li><i class="fas fa-check"></i> Pixel Perfect Design</li>
-          <li><i class="fas fa-check"></i> Modern Technology Stack</li>
-          <li><i class="fas fa-check"></i> 24/7 Professional Support</li>
-          <li><i class="fas fa-check"></i> Agile Development Methodology</li>
+          <li><i class="fas fa-check-circle" style="font-size: 10px;"></i> Pixel Perfect Design</li>
+          <li><i class="fas fa-check-circle" style="font-size: 10px;"></i> Modern Technology Stack</li>
+          <li><i class="fas fa-check-circle" style="font-size: 10px;"></i> 24/7 Professional Support</li>
+          <li><i class="fas fa-check-circle" style="font-size: 10px;"></i> Agile Development Methodology</li>
         </ul>
 
         <a href="about.html" class="btn primary">READ MORE</a>
@@ -115,56 +116,44 @@
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="section services">
-    <div class="container">
+  <section id="services" class="section-premium-grey">
+    <div class="container text-center">
       <h2 class="section-title">OUR <span class="highlight">SERVICES</span></h2>
       <p class="section-lead">We offer comprehensive digital solutions to help your business thrive online.</p>
 
-      <div class="cards">
-
+      <div class="services-mini-grid">
         <!-- Card 1 -->
-        <a href="web-design-development.html" style="text-decoration: none; color: inherit;">
-          <article class="service-card">
-            <div class="icon-circle">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <h3>WEB DESIGN & DEV</h3>
+        <div class="service-mini-card">
+          <a href="web-design-development.html" style="text-decoration: none; color: inherit;">
+            <i class="fas fa-laptop-code"></i>
+            <h4>Web Design & Dev</h4>
             <p>Modern, responsive, and SEO-friendly websites built for performance and conversion.</p>
-          </article>
-        </a>
+          </a>
+        </div>
         <!-- Card 2 -->
-        <a href="branding-identity.html" style="text-decoration: none; color: inherit;">
-          <article class="service-card">
-            <div class="icon-circle">
-              <i class="fas fa-paint-brush"></i>
-            </div>
-            <h3>BRANDING & IDENTITY</h3>
+        <div class="service-mini-card">
+          <a href="branding-identity.html" style="text-decoration: none; color: inherit;">
+            <i class="fas fa-paint-brush"></i>
+            <h4>Branding & Identity</h4>
             <p>Logos, color palettes, and visual guidelines that define your unique brand voice.</p>
-          </article>
-        </a>
-
+          </a>
+        </div>
         <!-- Card 3 -->
-        <a href="ecommerce-solutions.html" style="text-decoration: none; color: inherit;">
-          <article class="service-card">
-            <div class="icon-circle">
-              <i class="fas fa-shopping-cart"></i>
-            </div>
-            <h3>E-COMMERCE</h3>
+        <div class="service-mini-card">
+          <a href="ecommerce-solutions.html" style="text-decoration: none; color: inherit;">
+            <i class="fas fa-shopping-cart"></i>
+            <h4>E-Commerce</h4>
             <p>Scalable online stores with secure payment integration and smooth user journeys.</p>
-          </article>
-        </a>
-
-        <!-- Card 4 (Digital Marketing) -->
-        <a href="digital-marketing.html" style="text-decoration: none; color: inherit;">
-          <article class="service-card">
-            <div class="icon-circle">
-              <i class="fas fa-bullhorn"></i>
-            </div>
-            <h3>DIGITAL MARKETING</h3>
+          </a>
+        </div>
+        <!-- Card 4 -->
+        <div class="service-mini-card">
+          <a href="digital-marketing.html" style="text-decoration: none; color: inherit;">
+            <i class="fas fa-bullhorn"></i>
+            <h4>Digital Marketing</h4>
             <p>Strategic marketing campaigns to increase your reach and drive conversions.</p>
-          </article>
-        </a>
-
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -433,147 +422,26 @@
   </div>
 
 
-  <!-- Floating Consult Now Button (Bottom Left) -->
-  <div id="consult-now-wrap" style="
-    position: fixed;
-    bottom: 24px;
-    left: 24px;
-    z-index: 9998;
-    display: flex;
-    align-items: center;
-    gap: 0;
-  ">
-    <button id="consult-now-btn" style="
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 22px;
-      background: linear-gradient(135deg, #ff0055, #ff4081);
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 4px 20px rgba(255, 0, 85, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      animation: consultPulse 2s ease-in-out infinite;
-    ">
-      <i class="fas fa-comments" style="font-size: 16px;"></i>
+  <!-- CONSULT NOW FIXED BUTTON -->
+  <div id="consult-now-wrap" class="consult-now-wrap">
+    <button id="consult-now-btn" class="consult-now-btn">
+      <i class="fas fa-comments"></i>
       Consult Now
     </button>
-    <button id="consult-dismiss-btn" aria-label="Dismiss consult button" style="
-      width: 28px;
-      height: 28px;
-      background: rgba(0, 0, 0, 0.55);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      font-size: 13px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: -10px;
-      margin-top: -28px;
-      transition: background 0.2s;
-      line-height: 1;
-    " onmouseover="this.style.background='#ff0055'" onmouseout="this.style.background='rgba(0,0,0,0.55)'">✕</button>
+    <button id="consult-dismiss-btn" class="consult-dismiss-btn" aria-label="Dismiss consult button">✕</button>
   </div>
 
-  <style>
-    @keyframes consultPulse {
-
-      0%,
-      100% {
-        box-shadow: 0 4px 20px rgba(255, 0, 85, 0.4);
-      }
-
-      50% {
-        box-shadow: 0 4px 30px rgba(255, 0, 85, 0.7);
-      }
-    }
-
-    #consult-now-btn:hover {
-      transform: scale(1.05);
-    }
-
-    @media (max-width: 600px) {
-      #consult-now-wrap {
-        bottom: 16px !important;
-        left: 14px !important;
-      }
-
-      #consult-now-btn {
-        padding: 10px 16px !important;
-        font-size: 11px !important;
-        gap: 6px !important;
-      }
-
-      #consult-now-btn i {
-        font-size: 13px !important;
-      }
-
-      #consult-dismiss-btn {
-        width: 22px !important;
-        height: 22px !important;
-        font-size: 10px !important;
-        margin-top: -22px !important;
-      }
-    }
-  </style>
 
   <!-- POPUP FORM -->
-  <div id="popup-overlay" style="
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(6px);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  ">
-    <div id="popup-box" style="
-      background: #fff;
-      border-radius: 16px;
-      max-width: 420px;
-      width: 90%;
-      padding: 36px 28px 28px;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      transform: translateY(30px) scale(0.95);
-      transition: transform 0.4s ease, opacity 0.4s ease;
-      opacity: 0;
-    ">
+  <div id="popup-overlay" class="popup-overlay">
+    <div id="popup-box" class="popup-box">
       <!-- Close button -->
-      <button id="popup-close" aria-label="Close popup" style="
-        position: absolute;
-        top: 12px;
-        right: 14px;
-        background: none;
-        border: none;
-        font-size: 22px;
-        color: #999;
-        cursor: pointer;
-        transition: color 0.2s;
-        line-height: 1;
-      " onmouseover="this.style.color='#ff0055'" onmouseout="this.style.color='#999'">✕</button>
+      <button id="popup-close" class="popup-close" aria-label="Close popup">✕</button>
 
       <!-- Header -->
-      <div style="text-align: center; margin-bottom: 20px;">
-        <div style="
-          width: 50px; height: 50px;
-          background: linear-gradient(135deg, #ff0055, #ff4081);
-          border-radius: 12px;
-          display: flex; align-items: center; justify-content: center;
-          margin: 0 auto 14px;
-        ">
-          <i class="fas fa-envelope" style="color: #fff; font-size: 20px;"></i>
+      <div class="text-center" style="margin-bottom: 20px;">
+        <div class="popup-header-icon">
+          <i class="fas fa-envelope"></i>
         </div>
         <h3 style="font-size: 22px; font-weight: 800; color: #111; margin-bottom: 6px;">Get a Free Quote!</h3>
         <p style="font-size: 14px; color: #777; line-height: 1.5;">Tell us about your project and we'll get back to you
@@ -582,49 +450,12 @@
 
       <!-- Form -->
       <form id="popup-form" style="display: flex; flex-direction: column; gap: 12px;">
-        <input type="text" id="popup-name" placeholder="Your Name" required style="
-          padding: 12px 14px;
-          border: 1.5px solid #e0e0e0;
-          border-radius: 10px;
-          font-size: 14px;
-          font-family: inherit;
-          transition: border-color 0.3s;
-          outline: none;
-        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
+        <input type="text" id="popup-name" placeholder="Your Name" required class="form-premium-input">
+        <input type="email" id="popup-email" placeholder="Your Email" required class="form-premium-input">
+        <input type="tel" id="popup-phone" placeholder="Phone Number" class="form-premium-input">
 
-        <input type="email" id="popup-email" placeholder="Your Email" required style="
-          padding: 12px 14px;
-          border: 1.5px solid #e0e0e0;
-          border-radius: 10px;
-          font-size: 14px;
-          font-family: inherit;
-          transition: border-color 0.3s;
-          outline: none;
-        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
-
-        <input type="tel" id="popup-phone" placeholder="Phone Number" style="
-          padding: 12px 14px;
-          border: 1.5px solid #e0e0e0;
-          border-radius: 10px;
-          font-size: 14px;
-          font-family: inherit;
-          transition: border-color 0.3s;
-          outline: none;
-        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
-
-        <select id="popup-service" required style="
-          padding: 12px 14px;
-          border: 1.5px solid #e0e0e0;
-          border-radius: 10px;
-          font-size: 14px;
-          font-family: inherit;
-          transition: border-color 0.3s;
-          outline: none;
-          background: #fff;
-          color: #555;
-          cursor: pointer;
-          appearance: auto;
-        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'">
+        <select id="popup-service" required class="form-premium-input"
+          style="color: #555; background: #fff; cursor: pointer; appearance: auto;">
           <option value="" disabled selected>Select a Service</option>
           <option value="Web Design & Development">Web Design & Development</option>
           <option value="Branding & Identity">Branding & Identity</option>
@@ -633,32 +464,10 @@
           <option value="Others">Others</option>
         </select>
 
-        <textarea id="popup-message" placeholder="Tell us about your project..." rows="3" style="
-          padding: 12px 14px;
-          border: 1.5px solid #e0e0e0;
-          border-radius: 10px;
-          font-size: 14px;
-          font-family: inherit;
-          resize: none;
-          transition: border-color 0.3s;
-          outline: none;
-        " onfocus="this.style.borderColor='#ff0055'" onblur="this.style.borderColor='#e0e0e0'"></textarea>
+        <textarea id="popup-message" placeholder="Tell us about your project..." rows="3" required
+          class="form-premium-input form-premium-textarea"></textarea>
 
-        <button type="submit" style="
-          padding: 14px;
-          background: linear-gradient(135deg, #ff0055, #ff4081);
-          color: #fff;
-          border: none;
-          border-radius: 10px;
-          font-size: 15px;
-          font-weight: 700;
-          cursor: pointer;
-          transition: transform 0.2s, box-shadow 0.2s;
-          box-shadow: 0 4px 15px rgba(255, 0, 85, 0.35);
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,0,85,0.45)'"
-          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,0,85,0.35)'">
+        <button type="submit" class="btn-premium-submit">
           Send Message <i class="fas fa-paper-plane" style="margin-left: 6px;"></i>
         </button>
       </form>
@@ -673,26 +482,16 @@
   <script>
     (function () {
       const overlay = document.getElementById('popup-overlay');
-      const box = document.getElementById('popup-box');
       const closeBtn = document.getElementById('popup-close');
       const form = document.getElementById('popup-form');
       const consultBtn = document.getElementById('consult-now-btn');
 
       function showPopup() {
-        overlay.style.display = 'flex';
-        // Trigger reflow for animation
-        requestAnimationFrame(() => {
-          overlay.style.opacity = '1';
-          box.style.opacity = '1';
-          box.style.transform = 'translateY(0) scale(1)';
-        });
+        overlay.classList.add('active');
       }
 
       function closePopup() {
-        overlay.style.opacity = '0';
-        box.style.transform = 'translateY(30px) scale(0.95)';
-        box.style.opacity = '0';
-        setTimeout(() => { overlay.style.display = 'none'; }, 400);
+        overlay.classList.remove('active');
       }
 
       // Auto-show after 5 seconds (only once per session)
@@ -716,15 +515,11 @@
         setTimeout(function () { consultWrap.style.display = 'none'; }, 300);
       });
 
-      // Close on X button
+      // Close events
       closeBtn.addEventListener('click', closePopup);
-
-      // Close on overlay click
       overlay.addEventListener('click', function (e) {
         if (e.target === overlay) closePopup();
       });
-
-      // Close on Escape
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closePopup();
       });

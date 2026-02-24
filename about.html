@@ -65,105 +65,44 @@
         </div>
     </header>
 
-    <style>
-        @media (max-width: 992px) {
 
-            .about-grid,
-            .two-column-grid {
-                grid-template-columns: 1fr !important;
-                gap: 40px !important;
-            }
-
-            .about-image {
-                order: -1;
-            }
-
-            .section-title {
-                font-size: 28px !important;
-            }
-
-            .about-text {
-                text-align: center;
-            }
-
-            .icon-list li {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .founder-note .container div {
-                padding: 40px 20px !important;
-            }
-
-            .founder-note p {
-                font-size: 16px !important;
-            }
-        }
-    </style>
-
-    <!-- ABOUT INTRO (Restored Visual Style) -->
-    <section class="about-section" style="padding: 100px 0;">
+    <!-- ABOUT INTRO -->
+    <section class="section about-section angled-bottom">
         <div class="container">
-            <div class="about-grid"
-                style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+            <div class="about-inner">
                 <div class="about-image">
-                    <div class="image-frame" style="position: relative;">
+                    <div class="image-frame">
                         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-                            alt="About Rapid Base Design"
-                            style="width: 100%; border-radius: 50%; aspect-ratio: 1; object-fit: cover; box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
+                            alt="About Rapid Base Design">
                     </div>
                 </div>
                 <div class="about-text">
-                    <span class="section-label"
-                        style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">WHO
-                        WE ARE</span>
-                    <h2
-                        style="font-size: 42px; font-weight: 900; margin: 15px 0; text-transform: uppercase; line-height: 1.1;">
-                        WE BUILD DIGITAL <br><span class="highlight">EXPERIENCES</span> THAT MATTER</h2>
-                    <p style="margin-bottom: 20px; color: #555;">At Rapid Base Design, we are passionate about
-                        technology and design.
+                    <span class="section-label">WHO WE ARE</span>
+                    <h2 class="section-title" style="text-align: left;">WE BUILD DIGITAL <br><span
+                            class="highlight">EXPERIENCES</span> THAT MATTER</h2>
+                    <p>At Rapid Base Design, we are passionate about technology and design.
                         We believe that every business deserves a stunning online presence that reflects its unique
                         identity and values. Our team of expert developers and designers work collaboratively to deliver
                         high-quality solutions that drive results.</p>
 
-                    <ul class="check-list" style="list-style: none; padding: 0; margin-bottom: 30px;">
-                        <li
-                            style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-weight: 700; color: #333;">
-                            <i class="fas fa-check-circle"
-                                style="color: var(--accent); background: rgba(255, 0, 85, 0.1); border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 14px;"></i>
-                            Creative & Innovative Solutions</li>
-                        <li
-                            style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-weight: 700; color: #333;">
-                            <i class="fas fa-check-circle"
-                                style="color: var(--accent); background: rgba(255, 0, 85, 0.1); border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 14px;"></i>
-                            Premium Quality Design</li>
-                        <li
-                            style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-weight: 700; color: #333;">
-                            <i class="fas fa-check-circle"
-                                style="color: var(--accent); background: rgba(255, 0, 85, 0.1); border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 14px;"></i>
-                            24/7 Dedicated Support</li>
-                        <li
-                            style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-weight: 700; color: #333;">
-                            <i class="fas fa-check-circle"
-                                style="color: var(--accent); background: rgba(255, 0, 85, 0.1); border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 14px;"></i>
-                            Results-Driven Strategies</li>
+                    <ul class="check-list">
+                        <li><i class="fas fa-check-circle"></i> Creative & Innovative Solutions</li>
+                        <li><i class="fas fa-check-circle"></i> Premium Quality Design</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 Dedicated Support</li>
+                        <li><i class="fas fa-check-circle"></i> Results-Driven Strategies</li>
                     </ul>
 
-                    <a href="contact.html" class="btn primary"
-                        style="background: var(--accent); color: #fff; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.2);">GET
-                        IN TOUCH</a>
+                    <a href="contact.html" class="btn primary">GET IN TOUCH</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NEW CONTENT (Story) -->
-    <section class="about-story" style="padding: 100px 0; background: #070707; color: #fff; text-align: center;">
-        <div class="container" style="max-width: 900px;">
-            <span class="section-label" style="color: var(--accent);">OUR PHILOSOPHY</span>
-            <h2 class="section-title" style="color: #fff; margin-bottom: 30px;">DESIGN THAT MOVES FAST. QUALITY THAT
-                LASTS.</h2>
+    <!-- STORY SECTION -->
+    <section class="section-premium-dark">
+        <div class="container max-width-900">
+            <span class="section-label">OUR PHILOSOPHY</span>
+            <h2 class="section-title" style="color: #fff;">DESIGN THAT MOVES FAST. QUALITY THAT LASTS.</h2>
             <p style="font-size: 18px; line-height: 1.8; opacity: 0.9; margin-bottom: 30px;">
                 We create clean, modern, and impactful designs that help businesses stand out in the digital world.
                 We believe great design doesn’t need to be slow or complicated, just strategic, thoughtful, and executed
@@ -178,13 +117,11 @@
     </section>
 
     <!-- MISSION & VISION -->
-    <section class="mission-vision" style="padding: 100px 0; background: #f9f9f9;">
+    <section class="section-premium-grey">
         <div class="container">
-            <div class="two-column-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                <div class="mission-card"
-                    style="background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-                    <div class="icon-circle"
-                        style="width: 60px; height: 60px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px;">
+            <div class="grid-2">
+                <div class="premium-card">
+                    <div class="icon-circle-premium">
                         <i class="fas fa-bullseye"></i>
                     </div>
                     <h3 style="font-size: 24px; font-weight: 800; margin-bottom: 15px;">OUR MISSION</h3>
@@ -192,10 +129,8 @@
                         fast, professional, and tailored for real-world results. We aim to simplify creative work so
                         brands can focus on what matters most to their growth.</p>
                 </div>
-                <div class="vision-card"
-                    style="background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-                    <div class="icon-circle"
-                        style="width: 60px; height: 60px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px;">
+                <div class="premium-card">
+                    <div class="icon-circle-premium">
                         <i class="fas fa-eye"></i>
                     </div>
                     <h3 style="font-size: 24px; font-weight: 800; margin-bottom: 15px;">OUR VISION</h3>
@@ -208,58 +143,43 @@
     </section>
 
     <!-- WHAT WE DO -->
-    <section class="what-we-do" style="padding: 100px 0; background: #fff;">
-        <div class="container" style="text-align: center;">
+    <section class="section-premium-white">
+        <div class="container text-center">
             <span class="section-label">EXPERTISE</span>
             <h2 class="section-title">WHAT WE DO</h2>
             <p class="section-lead" style="max-width: 800px; margin: 0 auto 50px;">We offer a complete range of creative
                 and digital design services to help your brand thrive.</p>
 
-            <div class="services-mini-grid"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-                <div class="service-mini-card"
-                    style="text-align: left; padding: 30px; border: 1px solid #eee; border-radius: 16px; transition: 0.3s;"
-                    onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='#eee'">
-                    <i class="fas fa-paint-brush"
-                        style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
-                    <h4 style="font-weight: 800; margin-bottom: 10px;">Branding & Logo Design</h4>
-                    <p style="font-size: 14px; color: #777;">Identity systems that define your brand voice.</p>
+            <div class="services-mini-grid">
+                <div class="service-mini-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h4>Branding & Logo Design</h4>
+                    <p>Identity systems that define your brand voice.</p>
                 </div>
-                <div class="service-mini-card"
-                    style="text-align: left; padding: 30px; border: 1px solid #eee; border-radius: 16px; transition: 0.3s;"
-                    onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='#eee'">
-                    <i class="fas fa-share-alt" style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
-                    <h4 style="font-weight: 800; margin-bottom: 10px;">Social Media Post Design</h4>
-                    <p style="font-size: 14px; color: #777;">Engaging content for all your social channels.</p>
+                <div class="service-mini-card">
+                    <i class="fas fa-share-alt"></i>
+                    <h4>Social Media Post Design</h4>
+                    <p>Engaging content for all your social channels.</p>
                 </div>
-                <div class="service-mini-card"
-                    style="text-align: left; padding: 30px; border: 1px solid #eee; border-radius: 16px; transition: 0.3s;"
-                    onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='#eee'">
-                    <i class="fas fa-laptop" style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
-                    <h4 style="font-weight: 800; margin-bottom: 10px;">Website & Landing Pages</h4>
-                    <p style="font-size: 14px; color: #777;">Modern, responsive, and landing pages that convert.</p>
+                <div class="service-mini-card">
+                    <i class="fas fa-laptop"></i>
+                    <h4>Website & Landing Pages</h4>
+                    <p>Modern, responsive, and landing pages that convert.</p>
                 </div>
-                <div class="service-mini-card"
-                    style="text-align: left; padding: 30px; border: 1px solid #eee; border-radius: 16px; transition: 0.3s;"
-                    onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='#eee'">
-                    <i class="fas fa-bullhorn" style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
-                    <h4 style="font-weight: 800; margin-bottom: 10px;">Marketing Creatives</h4>
-                    <p style="font-size: 14px; color: #777;">Visuals designed to amplify your marketing efforts.</p>
+                <div class="service-mini-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h4>Marketing Creatives</h4>
+                    <p>Visuals designed to amplify your marketing efforts.</p>
                 </div>
-                <div class="service-mini-card"
-                    style="text-align: left; padding: 30px; border: 1px solid #eee; border-radius: 16px; transition: 0.3s;"
-                    onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='#eee'">
-                    <i class="fas fa-pencil-ruler"
-                        style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
-                    <h4 style="font-weight: 800; margin-bottom: 10px;">UI/UX Design</h4>
-                    <p style="font-size: 14px; color: #777;">User-centered designs for apps and interfaces.</p>
+                <div class="service-mini-card">
+                    <i class="fas fa-pencil-ruler"></i>
+                    <h4>UI/UX Design</h4>
+                    <p>User-centered designs for apps and interfaces.</p>
                 </div>
-                <div class="service-mini-card"
-                    style="text-align: left; padding: 30px; border: 1px solid #eee; border-radius: 16px; transition: 0.3s;"
-                    onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='#eee'">
-                    <i class="fas fa-file-pdf" style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
-                    <h4 style="font-weight: 800; margin-bottom: 10px;">Digital Collateral</h4>
-                    <p style="font-size: 14px; color: #777;">Brochures, posters, and pitch decks.</p>
+                <div class="service-mini-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h4>Digital Collateral</h4>
+                    <p>Brochures, posters, and pitch decks.</p>
                 </div>
             </div>
 
@@ -269,86 +189,62 @@
     </section>
 
     <!-- OUR PROCESS -->
-    <section class="our-process" style="padding: 100px 0; background: #070707; color: #fff;">
+    <section class="section-premium-dark">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <span class="section-label" style="color: var(--accent);">HOW WE WORK</span>
+            <div class="text-center" style="margin-bottom: 60px;">
+                <span class="section-label">HOW WE WORK</span>
                 <h2 class="section-title" style="color: #fff;">OUR PROCESS</h2>
             </div>
 
-            <div class="process-steps-grid"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
-                <div class="step-item" style="text-align: center;">
-                    <div
-                        style="font-size: 42px; font-weight: 900; color: var(--accent); margin-bottom: 15px; opacity: 0.8;">
-                        01</div>
-                    <h4 style="font-weight: 800; margin-bottom: 10px; color: #fff;">Understand</h4>
-                    <p style="font-size: 14px; color: #aaa;">We listen, analyze, and learn about your goals.</p>
+            <div class="process-steps-grid">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <h4>Understand</h4>
+                    <p>We listen, analyze, and learn about your goals.</p>
                 </div>
-                <div class="step-item" style="text-align: center;">
-                    <div
-                        style="font-size: 42px; font-weight: 900; color: var(--accent); margin-bottom: 15px; opacity: 0.8;">
-                        02</div>
-                    <h4 style="font-weight: 800; margin-bottom: 10px; color: #fff;">Strategize</h4>
-                    <p style="font-size: 14px; color: #aaa;">We map out the right structure and creative direction.</p>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <h4>Strategize</h4>
+                    <p>We map out the right structure and creative direction.</p>
                 </div>
-                <div class="step-item" style="text-align: center;">
-                    <div
-                        style="font-size: 42px; font-weight: 900; color: var(--accent); margin-bottom: 15px; opacity: 0.8;">
-                        03</div>
-                    <h4 style="font-weight: 800; margin-bottom: 10px; color: #fff;">Design</h4>
-                    <p style="font-size: 14px; color: #aaa;">Clean, modern, and high-quality work delivered fast.</p>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <h4>Design</h4>
+                    <p>Clean, modern, and high-quality work delivered fast.</p>
                 </div>
-                <div class="step-item" style="text-align: center;">
-                    <div
-                        style="font-size: 42px; font-weight: 900; color: var(--accent); margin-bottom: 15px; opacity: 0.8;">
-                        04</div>
-                    <h4 style="font-weight: 800; margin-bottom: 10px; color: #fff;">Refine</h4>
-                    <p style="font-size: 14px; color: #aaa;">We refine based on your input until it aligns.</p>
+                <div class="step-item">
+                    <div class="step-number">04</div>
+                    <h4>Refine</h4>
+                    <p>We refine based on your input until it aligns.</p>
                 </div>
-                <div class="step-item" style="text-align: center;">
-                    <div
-                        style="font-size: 42px; font-weight: 900; color: var(--accent); margin-bottom: 15px; opacity: 0.8;">
-                        05</div>
-                    <h4 style="font-weight: 800; margin-bottom: 10px; color: #fff;">Delivery</h4>
-                    <p style="font-size: 14px; color: #aaa;">Ready-to-use files across all required platforms.</p>
+                <div class="step-item">
+                    <div class="step-number">05</div>
+                    <h4>Delivery</h4>
+                    <p>Ready-to-use files across all required platforms.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- WHY CHOOSE US -->
-    <section class="why-choose" style="padding: 100px 0; background: #fff;">
+    <section class="section-premium-white">
         <div class="container">
-            <div class="about-grid"
-                style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center;">
+            <div class="grid-2" style="align-items: center;">
                 <div class="about-text">
                     <span class="section-label">BENEFITS</span>
-                    <h2 class="section-title">WHY CHOOSE RAPID BASE DESIGN?</h2>
+                    <h2 class="section-title" style="text-align: left;">WHY CHOOSE RAPID BASE DESIGN?</h2>
                     <p style="margin-bottom: 30px;">We focus on what truly matters: designs that help your brand look
                         strong, trustworthy, and premium.</p>
-                    <ul class="icon-list" style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px;"><i
-                                class="fas fa-shipping-fast" style="color: var(--accent);"></i> Fast Delivery Without
-                            Compromising Quality</li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px;"><i
-                                class="fas fa-star" style="color: var(--accent);"></i> Clean, Modern & Professional
-                            Designs</li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px;"><i
-                                class="fas fa-comments" style="color: var(--accent);"></i> Clear Communication
-                            Throughout</li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px;"><i
-                                class="fas fa-check-circle" style="color: var(--accent);"></i> Customized Solutions for
-                            Every Business</li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px;"><i
-                                class="fas fa-award" style="color: var(--accent);"></i> Experience Across Multiple
-                            Industries</li>
-                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 12px;"><i
-                                class="fas fa-sync" style="color: var(--accent);"></i> Reliable & Process-Driven
-                            Workflow</li>
+                    <ul class="icon-list-premium">
+                        <li><i class="fas fa-shipping-fast"></i> Fast Delivery Without Compromising Quality</li>
+                        <li><i class="fas fa-star"></i> Clean, Modern & Professional Designs</li>
+                        <li><i class="fas fa-comments"></i> Clear Communication Throughout</li>
+                        <li><i class="fas fa-check-circle"></i> Customized Solutions for Every Business</li>
+                        <li><i class="fas fa-award"></i> Experience Across Multiple Industries</li>
+                        <li><i class="fas fa-sync"></i> Reliable & Process-Driven Workflow</li>
                     </ul>
                 </div>
-                <div class="values-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="grid-2" style="gap: 20px;">
                     <div class="value-item"
                         style="background: #fdfdfd; padding: 30px; border-radius: 12px; border-left: 4px solid var(--accent);">
                         <h5 style="font-weight: 800; margin-bottom: 8px;">Creativity</h5>
@@ -375,12 +271,10 @@
     </section>
 
     <!-- FOUNDER'S NOTE -->
-    <section class="founder-note" style="padding: 100px 0; background: #f9f9f9; text-align: center;">
+    <section class="section-premium-grey text-center">
         <div class="container">
-            <div
-                style="max-width: 800px; margin: 0 auto; background: #fff; padding: 60px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); position: relative;">
-                <div style="position: absolute; top: 30px; left: 40px; font-size: 60px; color: #eee;"><i
-                        class="fas fa-quote-left"></i></div>
+            <div class="founder-quote-box">
+                <div class="quote-icon-large"><i class="fas fa-quote-left"></i></div>
                 <h3 style="font-size: 28px; font-weight: 900; margin-bottom: 30px;">A NOTE FROM THE FOUNDER</h3>
                 <p style="font-size: 18px; line-height: 1.8; color: #444; font-style: italic; margin-bottom: 30px;">
                     "Rapid Base Design was built with one clear belief: Every business deserves good design fast. What
