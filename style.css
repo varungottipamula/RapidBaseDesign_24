@@ -22,7 +22,7 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
   scroll-behavior: smooth;
 }
 
@@ -1633,8 +1633,8 @@ textarea.form-control {
 
   /* Footer */
   .footer-inner {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 
   .footer-col {
