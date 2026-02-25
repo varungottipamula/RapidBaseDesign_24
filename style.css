@@ -121,7 +121,7 @@ body {
 }
 
 .header-contact i,
-.contact-list i.fa-phone-alt,
+.contact-list i.fa-phone,
 .contact-list i.fa-phone {
   color: var(--accent);
   display: inline-block;
