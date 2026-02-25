@@ -120,11 +120,11 @@ body {
   font-size: 14px;
 }
 
-.header-contact i {
+.header-contact i,
+.contact-list i.fa-phone-alt,
+.contact-list i.fa-phone {
   color: var(--accent);
   display: inline-block;
-  transform: rotate(15deg);
-  /* Tweak to make it look 'sidha' */
 }
 
 /* Mobile Menu Toggle */
@@ -1632,10 +1632,9 @@ textarea.form-control {
   }
 
   /* Footer */
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    text-align: center;
+  .footer-inner {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
   }
 
   .footer-col {
