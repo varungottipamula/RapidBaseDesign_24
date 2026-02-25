@@ -122,6 +122,9 @@ body {
 
 .header-contact i {
   color: var(--accent);
+  display: inline-block;
+  transform: rotate(15deg);
+  /* Tweak to make it look 'sidha' */
 }
 
 /* Mobile Menu Toggle */
