@@ -315,8 +315,8 @@ body {
 
 /* ================= ABOUT SECTION ================= */
 .about-section {
-  padding: 180px 0 100px;
-  /* Top padding accounts for negative margin */
+  padding: 180px 0 150px;
+  /* Top padding for hero offset, bottom padding to clear angled cut */
   background: #fff;
   z-index: 1;
   position: relative;
@@ -429,11 +429,6 @@ body {
   font-size: 10px;
 }
 
-/* ================= ABOUT SECTION ================= */
-.about-section {
-  padding: 100px 0;
-  background: #fff;
-}
 
 .about-inner {
   display: flex;
