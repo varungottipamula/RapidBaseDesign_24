@@ -818,12 +818,114 @@ body {
 }
 
 .blog-filter-btn.active,
-.blog-filter-btn:hover {
-  color: #000;
+.blog-filter.nav-link.active {
+  color: var(--primary);
 }
 
-.blog-filter-btn.active::after {
+.nav-link.active::after {
   width: 100%;
+}
+
+/* Dropdown Container */
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown>.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown i {
+  font-size: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Dropdown Menu (Hidden by default) */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 240px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Show Dropdown on Hover (Desktop) */
+@media (min-width: 992px) {
+  .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown:hover i {
+    transform: rotate(180deg);
+  }
+}
+
+/* Mobile Dropdown Behavior */
+@media (max-width: 991px) {
+  .dropdown {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding: 0 0 0 20px;
+    display: none;
+    /* Controlled by JS */
+    width: 100%;
+    background: transparent;
+  }
+
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown.active i {
+    transform: rotate(180deg);
+  }
+
+  .dropdown .nav-link {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.dropdown-link {
+  display: block;
+  padding: 12px 25px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.dropdown-link:hover {
+  background: rgba(255, 30, 100, 0.05);
+  color: var(--primary);
+  padding-left: 30px;
 }
 
 /* ================= PRE-FOOTER / FOOTER ================= */

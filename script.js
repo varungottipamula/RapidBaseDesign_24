@@ -139,6 +139,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Critical UI: Mobile Nav & Typing Effect (Execute Immediately)
 document.addEventListener('DOMContentLoaded', () => {
+  /* ---------- MOBILE DROPDOWN TOGGLE ---------- */
+  const dropdowns = document.querySelectorAll('.dropdown');
+  dropdowns.forEach(dropdown => {
+    const link = dropdown.querySelector('.nav-link');
+    if (link && window.innerWidth < 992) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdown.classList.toggle('active');
+
+        // Close other dropdowns
+        dropdowns.forEach(other => {
+          if (other !== dropdown) other.classList.remove('active');
+        });
+      });
+    }
+  });
+
   /* ---------- MOBILE NAV TOGGLE ---------- */
   const navToggle = document.getElementById('nav-toggle');
   const navEl = document.getElementById('site-nav');
