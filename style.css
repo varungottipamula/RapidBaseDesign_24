@@ -911,20 +911,24 @@ body {
   }
 }
 
-.dropdown-link {
+/* Dropdown Items styling with higher specificity to override .nav a */
+.nav .dropdown-menu .dropdown-link {
   display: block;
   padding: 12px 25px;
-  color: #333;
+  color: #333 !important;
+  /* Force visibility */
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   transition: all 0.3s ease;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 
-.dropdown-link:hover {
-  background: rgba(255, 30, 100, 0.05);
-  color: var(--primary);
+.nav .dropdown-menu .dropdown-link:hover {
+  background: rgba(255, 0, 85, 0.05);
+  /* Match accent color */
+  color: var(--accent) !important;
   padding-left: 30px;
 }
 
