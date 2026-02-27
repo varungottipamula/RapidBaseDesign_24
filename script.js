@@ -297,8 +297,10 @@ window.addEventListener('load', () => {
     const mouse = { x: W / 2, y: H / 2 };
     window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
 
+    const isMobile = window.innerWidth < 768;
     // create small particles
-    for (let i = 0; i < 90; i++) {
+    const particleCount = isMobile ? 40 : 90;
+    for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * W,
         y: Math.random() * H,
@@ -311,7 +313,8 @@ window.addEventListener('load', () => {
     }
 
     // create blobs
-    for (let i = 0; i < 6; i++) {
+    const blobCount = isMobile ? 3 : 6;
+    for (let i = 0; i < blobCount; i++) {
       blobs.push({
         x: Math.random() * W,
         y: Math.random() * H,
@@ -385,14 +388,22 @@ window.addEventListener('load', () => {
     }
     draw();
 
-    /* ---------- small performance tweak: pause canvas when tab hidden ---------- */
+    /* ---------- small performance tweak: pause canvas when tab hidden or prefers-reduced-motion ---------- */
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function stopMotion() {
+      particles.forEach(p => { p.vx = 0; p.vy = 0; });
+      blobs.forEach(b => { b.vx = 0; b.vy = 0; });
+    }
+
+    if (mediaQuery.matches) stopMotion();
+
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        particles.forEach(p => { p.vx = 0; p.vy = 0; });
-        blobs.forEach(b => { b.vx = 0; b.vy = 0; });
+      if (document.hidden || mediaQuery.matches) {
+        stopMotion();
       } else {
         particles.forEach(p => { p.vx = (Math.random() - 0.5) * 0.3; p.vy = (Math.random() - 0.5) * 0.3; });
-        blobs.forEach(b => { b.vx = (Math.random() - 0.5) * 0.6; b.vy = (Math.random() - 0.5) * 0.6; });
+        blobs.forEach(b => { b.vx = (Math.random() - 0.5) * 0.6; b.vy = (Math.random() - 0.6) * 0.6; });
       }
     });
   }
