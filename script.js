@@ -139,11 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Critical UI: Mobile Nav & Typing Effect (Execute Immediately)
 document.addEventListener('DOMContentLoaded', () => {
+  const windowWidth = window.innerWidth;
   /* ---------- MOBILE DROPDOWN TOGGLE ---------- */
   const dropdowns = document.querySelectorAll('.dropdown');
   dropdowns.forEach(dropdown => {
     const link = dropdown.querySelector('.nav-link');
-    if (link && window.innerWidth < 992) {
+    if (link && windowWidth < 992) {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();

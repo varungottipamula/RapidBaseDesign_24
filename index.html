@@ -2,14 +2,21 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJZQT191D5"></script>
+  <!-- Google tag (gtag.js) - Defer for performance -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    window.addEventListener('load', function () {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-WJZQT191D5";
+      document.head.appendChild(script);
 
-    gtag('config', 'G-WJZQT191D5');
+      script.onload = function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-WJZQT191D5');
+      };
+    });
   </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -23,10 +30,94 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="images/hero_bg.png">
   <link rel="stylesheet" href="style.css?v=2">
+  <style>
+    /* Critical Hero CSS */
+    :root {
+      --bg-dark: #070707;
+      --accent: #d60047;
+      --font-main: 'Inter', sans-serif;
+      --section-angle: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+    }
 
-  <!-- Non-blocking Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print"
-    onload="this.media='all'">
+    body {
+      font-family: var(--font-main);
+      background: #fff;
+      margin: 0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(7, 7, 7, 0.95);
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background-color: #000;
+      background-image: url('images/hero_bg.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      clip-path: var(--section-angle);
+      z-index: 2;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero-title {
+      font-size: 64px;
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    .hero-title .highlight {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 32px;
+      }
+
+      .site-header {
+        padding: 15px 0;
+      }
+    }
+  </style>
+
+  <!-- Font Awesome -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </noscript>
@@ -143,7 +234,7 @@
         <div class="service-mini-card">
           <a href="web-design-development" style="text-decoration: none; color: inherit;">
             <i class="fas fa-laptop-code"></i>
-            <h4>Web Design & Dev</h4>
+            <h3>Web Design & Dev</h3>
             <p>Modern, responsive, and SEO-friendly websites built for performance and conversion.</p>
           </a>
         </div>
@@ -151,7 +242,7 @@
         <div class="service-mini-card">
           <a href="branding-identity" style="text-decoration: none; color: inherit;">
             <i class="fas fa-paint-brush"></i>
-            <h4>Branding & Identity</h4>
+            <h3>Branding & Identity</h3>
             <p>Logos, color palettes, and visual guidelines that define your unique brand voice.</p>
           </a>
         </div>
@@ -159,7 +250,7 @@
         <div class="service-mini-card">
           <a href="ecommerce-solutions" style="text-decoration: none; color: inherit;">
             <i class="fas fa-shopping-cart"></i>
-            <h4>E-Commerce</h4>
+            <h3>E-Commerce</h3>
             <p>Scalable online stores with secure payment integration and smooth user journeys.</p>
           </a>
         </div>
@@ -167,7 +258,7 @@
         <div class="service-mini-card">
           <a href="digital-marketing" style="text-decoration: none; color: inherit;">
             <i class="fas fa-bullhorn"></i>
-            <h4>Digital Marketing</h4>
+            <h3>Digital Marketing</h3>
             <p>Strategic marketing campaigns to increase your reach and drive conversions.</p>
           </a>
         </div>
@@ -184,7 +275,7 @@
       <div class="cards portfolio-grid">
         <!-- Project 1 -->
         <article class="portfolio-item">
-          <img src="images/web design/webpage.jpeg" alt="Modern Feminine Web Design Project" width="600" height="400"
+          <img src="images/web design/webpage.jpeg" alt="Modern Feminine Web Design Project" width="246" height="438"
             loading="lazy">
           <div class="portfolio-overlay">
             <h3>FEMINE US</h3>
@@ -195,8 +286,8 @@
 
         <!-- Project 2 -->
         <article class="portfolio-item">
-          <img src="images/branding/skincare.jpeg" alt="Skincare Brand Identity and Branding Project" width="600"
-            height="400" loading="lazy">
+          <img src="images/branding/skincare.jpeg" alt="Skincare Brand Identity and Branding Project" width="438"
+            height="438" loading="lazy">
           <div class="portfolio-overlay">
             <h3>SKINCARE BRAND</h3>
             <p>BRANDING & ADS</p>
@@ -352,7 +443,7 @@
         <!-- Q1 -->
         <div class="faq-item">
           <div class="faq-header">
-            <h4>1. Why should I hire Rapid Base Design as my digital marketing agency in Mumbai?</h4>
+            <h3>1. Why should I hire Rapid Base Design as my digital marketing agency in Mumbai?</h3>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="faq-content">
@@ -365,7 +456,7 @@
         <!-- Q2 -->
         <div class="faq-item">
           <div class="faq-header">
-            <h4>2. What digital marketing services does Rapid Base Design offer?</h4>
+            <h3>2. What digital marketing services does Rapid Base Design offer?</h3>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="faq-content">
@@ -378,7 +469,7 @@
         <!-- Q3 -->
         <div class="faq-item">
           <div class="faq-header">
-            <h4>3. How long does SEO take to show results?</h4>
+            <h3>3. How long does SEO take to show results?</h3>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="faq-content">
@@ -445,7 +536,7 @@
       <div class="footer-col">
         <h4>NEWSLETTER</h4>
         <form class="newsletter-form">
-          <input type="email" placeholder="Your Email">
+          <input type="email" placeholder="Your Email" aria-label="Your Email for Newsletter" required>
           <button type="submit">GO</button>
         </form>
       </div>
@@ -499,18 +590,32 @@
           <i class="fas fa-envelope"></i>
         </div>
         <h3 style="font-size: 22px; font-weight: 800; color: #111; margin-bottom: 6px;">Get a Free Quote!</h3>
-        <p style="font-size: 14px; color: #777; line-height: 1.5;">Tell us about your project and we'll get back to you
+        <p style="font-size: 14px; color: #555; line-height: 1.5;">Tell us about your project and we'll get back to you
           within 24 hours.</p>
       </div>
 
       <!-- Form -->
       <form id="popup-form" style="display: flex; flex-direction: column; gap: 12px;">
+        <label for="popup-name"
+          style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Your
+          Name</label>
         <input type="text" id="popup-name" placeholder="Your Name" required class="form-premium-input">
+
+        <label for="popup-email"
+          style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Your
+          Email</label>
         <input type="email" id="popup-email" placeholder="Your Email" required class="form-premium-input">
+
+        <label for="popup-phone"
+          style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Phone
+          Number</label>
         <input type="tel" id="popup-phone" placeholder="Phone Number" class="form-premium-input">
 
+        <label for="popup-service"
+          style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Select
+          a Service</label>
         <select id="popup-service" required class="form-premium-input"
-          style="color: #555; background: #fff; cursor: pointer; appearance: auto;">
+          style="color: #444; background: #fff; cursor: pointer; appearance: auto;" aria-label="Select a Service">
           <option value="" disabled selected>Select a Service</option>
           <option value="Web Design & Development">Web Design & Development</option>
           <option value="Branding & Identity">Branding & Identity</option>
@@ -519,6 +624,9 @@
           <option value="Others">Others</option>
         </select>
 
+        <label for="popup-message"
+          style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Your
+          Message</label>
         <textarea id="popup-message" placeholder="Tell us about your project..." rows="3" required
           class="form-premium-input form-premium-textarea"></textarea>
 
